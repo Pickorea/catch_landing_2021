@@ -44,10 +44,11 @@ class TripController extends Controller
          $locations = Location::pluck('location_name','id');
          $methods = Method::pluck('method_name','id');
         //  dd($species);
-        return view('landing.trips.create')->withItem($fisherman)
-        ->with('species',$species)
-        ->with('locations',$locations)
-        ->with('methods',$methods);
+        return view('landing.trips.create')
+        ->withFisherman($fisherman)
+        ->withSpecies($species)
+        ->withLocations($locations)
+        ->withMethods($methods);
     }
 
     /**

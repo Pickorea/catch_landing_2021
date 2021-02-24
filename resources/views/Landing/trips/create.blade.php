@@ -43,9 +43,9 @@
 
                 <div class="card-body">
                    
-                {{ html()->form('POST', route('fisherman.trip.store', $item->id))->open() }}
+                {{ html()->form('POST', route('fisherman.trip.store', $fisherman->id))->open() }}
                 <div class="form-group">
-                    <input type="hidden" name="fisherman_id" value="<?php echo $item->id ?>" />
+                    <input type="hidden" name="fisherman_id" value="{{ $fisherman->id }}" />    
                     <label for="trip_hrs">Trip Hours</label>
                     <input type="Number" class="form-control" id="trip_hrs" name="trip_hrs" placeholder="Enter Trip Hours"   value="{{old('trip_hrs')}}">
                 </div>
