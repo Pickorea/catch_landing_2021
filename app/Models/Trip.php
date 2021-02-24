@@ -21,8 +21,8 @@ class Trip extends Model
 
     public function species()
     {
-        return $this->belongsToMany(Species::class,'species_trip')->withPivot(['species_id'],['weight']);
-       
+        return $this->belongsToMany(Species::class,'species_trip')->withPivot(['weight']);
+
     }
 
     public function locations()
@@ -41,7 +41,7 @@ class Trip extends Model
 
     public static function getTrips()
     {
-        
+
        $records = SpeciesTrip::leftjoin('species','species.id','=','species_trip.species_id')
        ->leftjoin('trips','trips.id','=','species_trip.trip_id')
        ->leftJoin('fishermans', 'fishermans.id', '=', 'trips.fisherman_id')
@@ -54,5 +54,5 @@ class Trip extends Model
                  return $records;
 
     }
-   
+
 }

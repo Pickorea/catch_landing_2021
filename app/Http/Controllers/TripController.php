@@ -26,9 +26,9 @@ class TripController extends Controller
      */
     public function index()
     {
-       
+
         $trips = Fisherman ::with (['trips'])->paginate(5);
-    
+
 
         return view('landing.trips.index')->withItems($trips);
     }
@@ -79,17 +79,17 @@ class TripController extends Controller
 
         $species = $request->input('species_id', []);
         $weight = $request->input('weight', []);
-       
 
-      
+
+
         for ($i=0; $i < count($species); $i++) {
             if ($species[$i] != '') {
                 $trip->species()->attach($species[$i], ['weight' => $weight[$i]]);
             }
-            
+
         }
 
-       
+
         return redirect()->route('fisherman.trip.index',$fisherman)
         ->with('success', 'Trip created successfully');
     }
@@ -113,16 +113,17 @@ class TripController extends Controller
      */
     public function edit(Fisherman $fisherman, Trip $trip)
     {
-      
+
         $species = Species::pluck('species_name','id');
         $locations = Location::pluck('location_name','id');
         $methods = Method::pluck('method_name','id');
-        
-       return view('landing.trips.edit')->withItem($fisherman)
-       ->with('species',$species)
-       ->with('locations',$locations)
-       ->with('methods',$methods)->withTrip($trip);
 
+        return view('landing.trips.edit')
+            ->withFisherman($fisherman)
+            ->withSpecies($species)
+            ->withLocations($locations)
+            ->withMethods($methods)
+            ->withTrip($trip);
     }
 
     /**
@@ -135,7 +136,7 @@ class TripController extends Controller
     public function update(Request $request, Trip $trip, Fisherman $fisherman)
     {
         $trip->update($request->all());
-    
+
         return redirect()->route('trip.index')
                         ->with('success','trip updated successfully');
     }
