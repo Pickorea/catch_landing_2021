@@ -39,8 +39,11 @@
                    
                 {{ html()->form('PATCH', route('fisherman.trip.update', [$item->id,$trip->id]))->open() }}
                 <div class="form-group">
-                    <input type="hidden" name="fisherman_id" value="<?php echo $item->id ?>" />
-                    <input type="hidden" name="trip_id" value="<?php echo $trip->id ?>" />
+                
+                    <input type="hidden" name="fisherman_id" value="{{ old('item_id', $item->id) }}" />
+                
+                    <input type="hidden" name="trip_id" value="{{ old('trip_id', $trip->id) }}" />
+                
                     <label for="trip_hrs">Trip Hours</label>
                     <input type="Number" class="form-control" id="trip_hrs" name="trip_hrs"   value="{{old('trip_hrs', $trip->trip_hrs)}}">
                 </div>
