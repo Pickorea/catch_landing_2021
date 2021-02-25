@@ -59,15 +59,7 @@ class TripController extends Controller
      */
     public function store(Request $request, Fisherman $fisherman)
     {
-        // dd($request->all());
-        // $data=[];
-		// $data['fisherman_id']=$request['fisherman_id'];
-		// $data['trip_hrs']=$request['trip_hrs'];
-        // $data['number_of_fishers']=$request['number_of_fishers'];
-        // $data['trip_date']=$request['trip_date'];
-        // $data['location_id']=$request['location_id'];
-        // $data['method_id']=$request['method_id'];
-        // $trip = Trip::create($data);
+      
         $trip = Trip::create(
             [
             'fisherman_id' => $request->fisherman_id,

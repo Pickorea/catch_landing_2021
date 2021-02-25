@@ -65,8 +65,7 @@
                 <select class="form-control" name="location_id" id="location_id">
                 
                 @foreach($locations as $key => $item)
-                    <!-- <option value="{{ $key }}" >{{ $item }}</option> -->
-                     <option value="{{ $key }}" >{{ $item }}</option>
+                       <option value="{{ $key }}" >{{ $item }}</option>
                 @endforeach
                 </select>
 
