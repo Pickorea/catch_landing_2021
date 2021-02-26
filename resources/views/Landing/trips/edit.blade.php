@@ -52,20 +52,19 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {{--  @foreach (old('species', $species->trips->count() ? $species->trips->trips : ['']) as $species_trip)--}}
-                                @foreach ($trip->species as $tripspecies)
-                                <tr id="species{{ $loop->index }}">
-                                    <td>
-                                        <x-forms.select-from-pluck name="species_id[]" value="{{$tripspecies->id}}" :options="$species" placeholder="-- choose species --" />
-                                    </td>
-                                    <td>
-                                        <x-forms.textfield type="number" name="species_weight[]" value="{{$tripspecies->pivot->weight}}" />
-                                    </td>
-                                    <td><button type="button" onclick="deleteSelectedRow(this)" class="btn btn-danger pull-right">-</button></td>
-                                </tr>
-                                 @endforeach
+                               
+                                    @foreach ($trip->species as $tripspecies)
+                                    <tr id="species{{ $loop->index }}">
+                                        <td>
+                                            <x-forms.select-from-pluck name="species_id[]" value="{{$tripspecies->id}}" :options="$species" placeholder="-- choose species --" />
+                                        </td>
+                                        <td>
+                                            <x-forms.textfield type="number" name="species_weight[]" value="{{$tripspecies->pivot->weight}}" />
+                                        </td>
+                                        <td><button type="button" onclick="deleteSelectedRow(this)" class="btn btn-danger pull-right">-</button></td>
+                                    </tr>
+                                    @endforeach
 
-                                {{--<tr id="product{{ count(old('species', $species->trips->count() ? $species->trip : [''])) }}"></tr>--}}
                                 </tbody>
                             </table>
                             <p>{{ json_encode($species) }}</p>

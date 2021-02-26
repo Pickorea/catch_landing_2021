@@ -45,9 +45,8 @@ class TripController extends Controller
          $methods = Method::pluck('method_name','id');
          $trip = new Trip();
 
-        //  dd($species);
-        return view('landing.trips.create')
-            ->withTrip($trip)
+         return view('landing.trips.create')
+        ->withTrip($trip)
         ->withFisherman($fisherman)
         ->withSpecies($species)
         ->withLocations($locations)
@@ -140,7 +139,7 @@ class TripController extends Controller
 
         $trip = Trip::create(
             [
-            'fisherman_id' => fisherman_id,
+            'fisherman_id' => $fisherman->id,
             'trip_hrs' => $request->trip_hrs,
             'number_of_fishers' => $request->number_of_fishers,
             'trip_date' => $request->trip_date,
