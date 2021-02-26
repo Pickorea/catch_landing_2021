@@ -135,18 +135,18 @@ class TripController extends Controller
      */
     public function update(Request $request, Fisherman $fisherman, Trip $trip)
     {
-       
+    //    $fisherman = Fisherman::find($fisherman_id);
     
-        // $trip->update([1,12],$request->all());
+         $trip->update($request->all());
 
         // dd($request->all());
 
 
 
-        $trip = Trip::create([$fisherman->id, $trip->id],$request->all());
+        // $trip->update($request->all());
         // dd($trip);
 
-        $trip->species()->detach();
+    
 
         $species = $request->input('species_id', []);
         $weight = $request->input('weight', []);
@@ -160,7 +160,7 @@ class TripController extends Controller
 
         }
 
-        return redirect()->route('trip.index')
+        return redirect()->route('trip.index', $fisherman)
                         ->with('success','trip updated successfully');
     }
 
