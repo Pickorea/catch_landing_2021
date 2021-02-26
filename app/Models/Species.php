@@ -15,8 +15,8 @@ class Species extends Model
 
     public function trips()
     {
-        return $this->belongsToMany(Trip::class,'species_trip')->withPivot(['species_id'],['weight']);
-       
+        return $this->belongsToMany(Trip::class,'species_trip')->withPivot('weight');
+
     }
-    
+
 }
