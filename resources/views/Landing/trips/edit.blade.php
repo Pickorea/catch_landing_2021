@@ -58,10 +58,10 @@
                                 @foreach ($trip->species as $species)
                                 <tr id="species{{ $loop->index }}">
                                     <td>
-                                        <x-forms.select-from-pluck name="species_id[]" value="{{$species->species_name}}" :options="$species" placeholder="-- choose species --" />
+                                        <x-forms.select-from-pluck name="species_id[]" value="{{$species->species_id}}" :options="$species" placeholder="-- choose species --" />
                                     </td>
                                     <td>
-                                        <x-forms.textfield type="number" name="species_weight" value="{{$species->weight}}" />
+                                        <x-forms.textfield type="number" name="species_weight" value="{{$species->species_weight}}" />
                                     </td>
                                     <td><button type="button" onclick="deleteSelectedRow(this)" class="btn btn-danger pull-right">-</button></td>
                                 </tr>
