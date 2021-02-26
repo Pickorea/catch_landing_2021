@@ -36,7 +36,7 @@
                     <input type="hidden" name="fisherman_id" value="{{ $fisherman->id }}" />
                     <input type="hidden" name="trip_id" value="{{ $trip->id }}" />
                     <div class="card">
-                        <div class="card-header">{{ __('Edit species') }}</div>
+                        <div class="card-header">{{ __('Edit Trip') }}</div>
                         <div class="card-body">
 
                             <x-forms.textfield type="number" name="trip_hrs" label="Trip Hours" value="{{ $trip->trip_hrs }}" />

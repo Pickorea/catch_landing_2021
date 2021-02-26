@@ -33,59 +33,20 @@
       
 
 </script>
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">{{ __('Create Trips') }}</div>
-               
-
-                <div class="card-body">
-                   
-                {{ html()->form('POST', route('fisherman.trip.store', $fisherman->id))->open() }}
-                <div class="form-group">
-                    <input type="hidden" name="fisherman_id" value="{{ $fisherman->id }}" />    
-                    <label for="trip_hrs">Trip Hours</label>
-                    <input type="Number" class="form-control" id="trip_hrs" name="trip_hrs" placeholder="Enter Trip Hours"   value="{{old('trip_hrs')}}">
-                </div>
-
-                <div class="form-group">
-                    <label for="number_of_fishers">Number of Fisherman Per Trip</label>
-                    <input type="text" class="form-control" id="number_of_fishers" name="number_of_fishers" placeholder="Enter Number of fisherman per trip"   value="{{old('number_of_fishers')}}">
-                </div>
-
-                <div class="form-group">
-                    <label for="trip_date">Trip Date</label>
-                    <input type="date" class="form-control" id="trip_date" name="trip_date" placeholder="Enter trip date"   value="{{old('trip_date')}}">
-                </div>
-                <div class="form-group">
-   
-                <label for="location_id">Location name</label>
-                <select class="form-control" name="location_id" id="location_id">
-                
-                @foreach($locations as $key => $item)
-                       <option value="{{ $key }}" >{{ $item }}</option>
-                @endforeach
-                </select>
-
-                </div>
-
-                <div class="form-group">
-   
-                <label for="method_id">Fishing method</label>
-                <select class="form-control" name="method_id" id="method_id">
-                
-                @foreach($methods as $key => $item)
-                <option value="{{ $key }}" >{{ $item }}</option>
-                @endforeach
-                </select>
-
-                </div>
-                
-                <div>
-
-                    <div>
+            <x-forms.post action="{{ route('fisherman.trip.store', $fisherman->id)) }}">
+                    <input type="hidden" name="fisherman_id" value="{{ $fisherman->id }}" />
+                    <input type="hidden" name="trip_id" value="{{ $trip->id }}" />
+                    <div class="card">
+                        <div class="card-header">{{ __('Create Trip') }}</div>
+                        <div class="card-body">
+                            <x-forms.textfield type="number" name="trip_hrs" label="Trip Hours" value="{{ $trip->trip_hrs }}" />
+                            <x-forms.textfield name="number_of_fishers" label="Number of Fisherman Per Trip" value="{{ $trip->number_of_fishers }}" />
+                            <x-forms.textfield type="date" name="trip_date" label="Enter trip date" value="{{ $trip->trip_date }}" />
+                            <x-forms.select-from-pluck name="location_id" label="Location name" value="{{ $trip->location_id }}" :options="$locations" placeholder="-- choose fishing location --" />
+                            <x-forms.select-from-pluck name="method_id" label="Fishing method" value="{{ $trip->method_id }}" :options="$methods" placeholder="-- choose fishing method --" />
                         <table class="table" id="products_table">
                             <thead>
                                 <tr>
@@ -136,7 +97,7 @@
 
                                         
                 <button type="submit" class="btn btn-primary mb-2">Submit</button>
-                {{ html()->form()->close() }}
+                </x-forms.post>
 
 
                 </div>
