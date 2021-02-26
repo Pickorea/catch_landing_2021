@@ -55,13 +55,13 @@
                                 </thead>
                                 <tbody>
                                 {{--  @foreach (old('species', $species->trips->count() ? $species->trips->trips : ['']) as $species_trip)--}}
-                                @foreach ($trip->species as $species)
+                                @foreach ($trip->species as $tripspecies)
                                 <tr id="species{{ $loop->index }}">
                                     <td>
-                                        <x-forms.select-from-pluck name="species_id[]" value="{{$species->species_id}}" :options="$species" placeholder="-- choose species --" />
+                                        <x-forms.select-from-pluck name="species_id[]" value="{{$tripspecies->id}}" :options="$species" placeholder="-- choose species --" />
                                     </td>
                                     <td>
-                                        <x-forms.textfield type="number" name="species_weight" value="{{$species->species_weight}}" />
+                                        <x-forms.textfield type="number" name="species_weight[]" value="{{$tripspecies->pivot->weight}}" />
                                     </td>
                                     <td><button type="button" onclick="deleteSelectedRow(this)" class="btn btn-danger pull-right">-</button></td>
                                 </tr>
@@ -70,6 +70,9 @@
                                 {{--<tr id="product{{ count(old('species', $species->trips->count() ? $species->trip : [''])) }}"></tr>--}}
                                 </tbody>
                             </table>
+                            <p>{{ json_encode($species) }}</p>
+                            <p>{{ json_encode($trip) }}</p>
+                            <p>{{ json_encode($trip->species) }}</p>
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary mb-2">Submit</button>
