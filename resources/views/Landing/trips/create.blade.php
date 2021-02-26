@@ -26,7 +26,7 @@
             <div class="col-md-12">
                 <x-forms.post action="{{ route('fisherman.trip.store', $fisherman->id) }}">
                     <div class="card">
-                        <div class="card-header">{{ __('Create Trip') }}</div>
+                        <div class="card-header">{{ __('Create Trip') }} for {{ $fisherman->first_name }} {{ $fisherman->last_name }}</div>
                         <div class="card-body">
                             <x-forms.textfield type="number" name="trip_hrs" label="Trip Hours" required />
                             <x-forms.textfield name="number_of_fishers" label="Number of Fisherman Per Trip"  required />
