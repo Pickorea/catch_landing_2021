@@ -135,23 +135,10 @@ class TripController extends Controller
      */
     public function update(Request $request, Fisherman $fisherman, Trip $trip)
     {
-    //    $fisherman = Fisherman::find($fisherman_id);
-    
          $trip->update($request->all());
-
-        // dd($request->all());
-
-
-
-        // $trip->update($request->all());
-        // dd($trip);
-
-    
 
         $species = $request->input('species_id', []);
         $weight = $request->input('weight', []);
-
-
 
         for ($i=0; $i < count($species); $i++) {
             if ($species[$i] != '') {
