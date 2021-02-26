@@ -36,9 +36,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <x-forms.post action="{{ route('fisherman.trip.store', $fisherman->id)) }}">
+            <x-forms.post action="{{ route('fisherman.trip.store', $fisherman->id) }}">
                     <input type="hidden" name="fisherman_id" value="{{ $fisherman->id }}" />
-                    <input type="hidden" name="trip_id" value="{{ $trip->id }}" />
                     <div class="card">
                         <div class="card-header">{{ __('Create Trip') }}</div>
                         <div class="card-body">
