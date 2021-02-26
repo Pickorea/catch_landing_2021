@@ -94,6 +94,7 @@
 
         <main class="py-4">
             @include('include.header')
+            @include('include.messages')
             @yield('content')
 
         </main>

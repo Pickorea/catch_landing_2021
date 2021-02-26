@@ -98,9 +98,11 @@ class TripController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Trip $trip)
+    public function show(Fisherman $fisherman, Trip $trip)
     {
-        return view('landing.trips.show')->withItem($trip);
+        return view('landing.trips.show')
+            ->withFisherman($trip->fisherman)
+            ->withTrip($trip);
     }
 
     /**
