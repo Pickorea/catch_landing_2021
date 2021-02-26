@@ -130,6 +130,30 @@ class TripController extends Controller
     {
         $trip->update($request->all());
 
+        // $trip = Trip::update(
+        //     [
+        //     'fisherman_id' => $request->fisherman_id,
+        //     'trip_hrs' => $request->trip_hrs,
+        //     'number_of_fishers' => $request->number_of_fishers,
+        //     'trip_date' => $request->trip_date,
+        //     'location_id' => $request->location_id,
+        //     'method_id' => $request->method_id
+        // ]);
+
+        $trip->species()->detach();
+
+        $species = $request->input('species_id', []);
+        $weight = $request->input('weight', []);
+
+
+
+        for ($i=0; $i < count($species); $i++) {
+            if ($species[$i] != '') {
+                $trip->species()->detach($species[$i], ['weight' => $weight[$i]]);
+            }
+
+        }
+
         return redirect()->route('trip.index')
                         ->with('success','trip updated successfully');
     }
