@@ -132,7 +132,7 @@ class TripController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fisherman $fisherman,Trip $trip,)
+    public function update(Request $request, Fisherman $fisherman,Trip $trip)
     {
         // $trip = $trip->update($request->all());
 
@@ -140,7 +140,7 @@ class TripController extends Controller
 
         $trip = Trip::create(
             [
-            'fisherman_id' => $request->fisherman_id,
+            'fisherman_id' => fisherman_id,
             'trip_hrs' => $request->trip_hrs,
             'number_of_fishers' => $request->number_of_fishers,
             'trip_date' => $request->trip_date,
