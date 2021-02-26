@@ -16,7 +16,7 @@ class Location extends Model
     public function trip()
     {
 
-        return $this->belongsTo(Trip::class);
+        return $this->hasOne(Trip::class);
 
     }
 }

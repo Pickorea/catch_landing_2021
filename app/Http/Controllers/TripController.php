@@ -133,21 +133,17 @@ class TripController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fisherman $fisherman)
+    public function update(Request $request, Fisherman $fisherman, Trip $trip)
     {
-        // $trip = $trip->update($request->all());
+       
+    
+        // $trip->update([1,12],$request->all());
+
+        // dd($request->all());
 
 
 
-        $trip = Trip::create(
-            [
-            'fisherman_id' => $fisherman->id,
-            'trip_hrs' => $request->trip_hrs,
-            'number_of_fishers' => $request->number_of_fishers,
-            'trip_date' => $request->trip_date,
-            'location_id' => $request->location_id,
-            'method_id' => $request->method_id
-        ]);
+        $trip = Trip::create([$fisherman->id, $trip->id],$request->all());
         // dd($trip);
 
         $trip->species()->detach();

@@ -37,8 +37,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                //$reports is a collection 
-                                    @foreach($reports as $report)
+                                      @foreach($reports as $report)
                                     <tr>                       
                                         <td>{{$report->island_name}}</td>
                                         <td> {{$report->first_name}}</td> 

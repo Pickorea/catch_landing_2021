@@ -59,7 +59,7 @@
                                             <x-forms.select-from-pluck name="species_id[]" value="{{$tripspecies->id}}" :options="$species" placeholder="-- choose species --" />
                                         </td>
                                         <td>
-                                            <x-forms.textfield type="number" name="species_weight[]" value="{{$tripspecies->pivot->weight}}" />
+                                            <x-forms.textfield type="float" name="species_weight[]" value="{{$tripspecies->pivot->weight}}" />
                                         </td>
                                         <td><button type="button" onclick="deleteSelectedRow(this)" class="btn btn-danger pull-right">-</button></td>
                                     </tr>
