@@ -131,7 +131,7 @@ class TripController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fisherman $fisherman,Trip $trip)
+    public function update(Request $request, Fisherman $fisherman)
     {
         // $trip = $trip->update($request->all());
 
