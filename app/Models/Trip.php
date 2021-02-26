@@ -14,6 +14,10 @@ class Trip extends Model
 
     protected $fillable = ['fisherman_id','trip_hrs','number_of_fishers', 'trip_date', 'location_id', 'method_id'];
 
+    protected $casts = [
+        'trip_date' => 'date',
+    ];
+
     public function fisherman(){
 
         return $this->belongsTo(Fisherman::class);
@@ -25,17 +29,17 @@ class Trip extends Model
 
     }
 
-    public function locations()
+    public function location()
     {
 
-        return $this->hasMany(Location::class);
+        return $this->belongsTo(Location::class);
 
     }
 
-    public function methods()
+    public function method()
     {
 
-        return $this->hasMany(Method::class);
+        return $this->belongsTo(Method::class);
 
     }
 
