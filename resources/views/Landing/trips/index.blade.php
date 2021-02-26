@@ -45,9 +45,9 @@
                                         <td> {{$item->last_name}}</td>
                                         <td> {{$trip->trip_hrs}}</td>
                                         <td> {{$trip->number_of_fishers}}</td> 
-                                        <td> {{$trip->trip_date}}</td>
-                                        <td> {{$trip->method_id}}</td>
-                                        <td> {{$trip->location_id}}</td> 
+                                        <td> {{ optional($trip->trip_date)->format('d M Y') }}</td>
+                                        <td> {{optional($trip->location)->location_name}}</td> 
+                                        <td>{{ optional($trip->method)->method_name }}</td>                                        
                                         <td> {{$trip->created_at->diffForHumans()}}</td>
                                         <td> 
                                         {{ html()->form('DELETE', route('trip.destroy', $trip->id))->open() }}
