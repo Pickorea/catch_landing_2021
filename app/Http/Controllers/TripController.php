@@ -62,10 +62,15 @@ class TripController extends Controller
      */
     public function store(Request $request, Fisherman $fisherman)
     {
+        $species = $request->input('species_id', []);
+        $weight = $request->input('species_weight', []);
 
+        if (count($species) !== count($weight)) {
+            throw new \Exception('Species count mismatched');
+        }
         $trip = Trip::create(
             [
-            'fisherman_id' => $request->fisherman_id,
+            'fisherman_id' => $fisherman->id,
             'trip_hrs' => $request->trip_hrs,
             'number_of_fishers' => $request->number_of_fishers,
             'trip_date' => $request->trip_date,
@@ -73,8 +78,6 @@ class TripController extends Controller
             'method_id' => $request->method_id
         ]);
 
-        $species = $request->input('species_id', []);
-        $weight = $request->input('weight', []);
 
 
 
@@ -133,7 +136,7 @@ class TripController extends Controller
     {
         // $trip = $trip->update($request->all());
 
-     
+
 
         $trip = Trip::create(
             [
