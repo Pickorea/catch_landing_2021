@@ -41,11 +41,11 @@
                     <div class="card">
                         <div class="card-header">{{ __('Create Trip') }}</div>
                         <div class="card-body">
-                            <x-forms.textfield type="number" name="trip_hrs" label="Trip Hours" value="{{ $trip->trip_hrs }}" />
-                            <x-forms.textfield name="number_of_fishers" label="Number of Fisherman Per Trip" value="{{ $trip->number_of_fishers }}" />
-                            <x-forms.textfield type="date" name="trip_date" label="Enter trip date" value="{{ $trip->trip_date }}" />
-                            <x-forms.select-from-pluck name="location_id" label="Location name" value="{{ $trip->location_id }}" :options="$locations" placeholder="-- choose fishing location --" />
-                            <x-forms.select-from-pluck name="method_id" label="Fishing method" value="{{ $trip->method_id }}" :options="$methods" placeholder="-- choose fishing method --" />
+                            <x-forms.textfield type="number" name="trip_hrs" label="Trip Hours" />
+                            <x-forms.textfield name="number_of_fishers" label="Number of Fisherman Per Trip"  />
+                            <x-forms.textfield type="date" name="trip_date" label="Enter trip date"  />
+                            <x-forms.select-from-pluck name="location_id" label="Location name"  :options="$locations" placeholder="-- choose fishing location --" />
+                            <x-forms.select-from-pluck name="method_id" label="Fishing method"  :options="$methods" placeholder="-- choose fishing method --" />
                         <table class="table" id="products_table">
                             <thead>
                                 <tr>
