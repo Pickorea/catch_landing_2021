@@ -7,22 +7,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
     <script>
+        let row_number = {{ $trip->species->count() }};
+
         function deleteSelectedRow(button) {
             console.log('delete_row current');
             $(button).parent().parent().html('');
         }
-        $(document).ready(function(){
-            let row_number = {{ $trip->species->count() }};
-            $("#add_row").click(function(e){
-                e.preventDefault();
-                console.log('add_row ' + row_number);
-                let new_row_number = row_number + 1;
-                $('#species_table tbody').append('<tr id="species' + new_row_number + '"></tr>');
-                $('#species' + new_row_number).html($('#speciestemplaterow').html()).find('td:first-child');
-                row_number++;
 
-            });
-        });
+        function addRow(button) {
+            console.log('add_row ' + row_number);
+            let new_row_number = row_number + 1;
+            $('#species_table tbody').append('<tr id="species' + new_row_number + '"></tr>');
+            $('#species' + new_row_number).html($('#speciestemplaterow').html()).find('td:first-child');
+            row_number++;
+        }
     </script>
 @endsection
 
@@ -50,7 +48,7 @@
                                 <tr>
                                     <th>Species</th>
                                     <th>Weight</th>
-                                    <th> <button id="add_row" class="btn btn-default pull-left">+</button></th>
+                                    <th> <button id="add_row" class="btn btn-default pull-left" onclick="addRow()">+</button></th>
                                 </tr>
                                 </thead>
                                 <tbody>

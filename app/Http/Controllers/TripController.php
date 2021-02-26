@@ -43,8 +43,11 @@ class TripController extends Controller
          $species = Species::pluck('species_name','id');
          $locations = Location::pluck('location_name','id');
          $methods = Method::pluck('method_name','id');
+         $trip = new Trip();
+
         //  dd($species);
         return view('landing.trips.create')
+            ->withTrip($trip)
         ->withFisherman($fisherman)
         ->withSpecies($species)
         ->withLocations($locations)
@@ -59,7 +62,7 @@ class TripController extends Controller
      */
     public function store(Request $request, Fisherman $fisherman)
     {
-      
+
         $trip = Trip::create(
             [
             'fisherman_id' => $request->fisherman_id,

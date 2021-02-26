@@ -1,107 +1,79 @@
 @extends('layouts.app')
 
-@section('content')
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-   
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-   
-
-
+@section('header')
     <script>
-       $(document).ready(function(){
-       let row_number = 1;
-       $("#add_row").click(function(e){
-           e.preventDefault();
-           let new_row_number = row_number - 1;
-           $('#product' + row_number).html($('#product' + new_row_number).html()).find('td:first-child');
-           $('#products_table').append('<tr id="product' + (row_number + 1) + '"></tr>');
-           row_number++;
-       });
-       
-                                                      
-       $("#delete_row").click(function(e){
-           e.preventDefault();
-           if(row_number > 1){
-           $("#product" + (row_number - 1)).html('');
-           row_number--;
-           }
-       });
+        let row_number = {{ $trip->species->count() }};
 
-       
-       });                                          
-      
+        function deleteSelectedRow(button) {
+            console.log('delete_row current');
+            $(button).parent().parent().html('');
+        }
+        function addRow(button) {
+            console.log('add_row ' + row_number);
+            let new_row_number = row_number + 1;
+            $('#species_table tbody').append('<tr id="species' + new_row_number + '"></tr>');
+            $('#species' + new_row_number).html($('#speciestemplaterow').html()).find('td:first-child');
+            row_number++;
+        }
+    </script>
+@endsection
 
-</script>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <x-forms.post action="{{ route('fisherman.trip.store', $fisherman->id) }}">
-                    <input type="hidden" name="fisherman_id" value="{{ $fisherman->id }}" />
+@section('content')
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <x-forms.post action="{{ route('fisherman.trip.store', $fisherman->id) }}">
                     <div class="card">
                         <div class="card-header">{{ __('Create Trip') }}</div>
                         <div class="card-body">
-                            <x-forms.textfield type="number" name="trip_hrs" label="Trip Hours" />
-                            <x-forms.textfield name="number_of_fishers" label="Number of Fisherman Per Trip"  />
-                            <x-forms.textfield type="date" name="trip_date" label="Enter trip date"  />
-                            <x-forms.select-from-pluck name="location_id" label="Location name"  :options="$locations" placeholder="-- choose fishing location --" />
-                            <x-forms.select-from-pluck name="method_id" label="Fishing method"  :options="$methods" placeholder="-- choose fishing method --" />
-                        <table class="table" id="products_table">
-                            <thead>
+                            <x-forms.textfield type="number" name="trip_hrs" label="Trip Hours" required />
+                            <x-forms.textfield name="number_of_fishers" label="Number of Fisherman Per Trip"  required />
+                            <x-forms.textfield type="date" name="trip_date" label="Enter trip date" required />
+                            <x-forms.select-from-pluck name="location_id" label="Location name"  :options="$locations" required placeholder="-- choose fishing location --" />
+                            <x-forms.select-from-pluck name="method_id" label="Fishing method"  :options="$methods" required placeholder="-- choose fishing method --" />
+                            <table class="table" id="species_table">
+                                <thead>
                                 <tr>
                                     <th>Species</th>
                                     <th>Weight</th>
+                                    <th> <button type="button" class="btn btn-default pull-left" onclick="addRow()">+</button></th>
                                 </tr>
-                            </thead>
+                                </thead>
                                 <tbody>
-                                    <tr id="product0">
-                                        <td class="col-md-2">
-                                    
-                                        
-                                                    <select name="species_id[]" class="form-control">
-                                                        <option value="">-- choose species --</option>
-                                                        @foreach ($species as $key => $item)
-                                                            <option value="{{ $key}}">
-                                                            {{ $item}}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                    
-                                    
-                                        </td>
-                                        <td class="col-md-2">
-                                    
-                                        
-                                        <input type="double" name="weight[]" class="form-control" value="1" />
-                                    
-                                        </td>
-
-                                        
-
-                                    </tr>
-                                    <tr id="product1"></tr>
-
                                 </tbody>
-                        </table>
-
-                        <div>
-                            <div class="col-md-12">
-                                <button id="add_row" class="btn btn-default pull-left">+ Add Row</button>
-                                <button id='delete_row' class="btn btn-default pull-right">- Delete Row</button>
-                            </div>
-
+                            </table>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary mb-2">Submit</button>
                         </div>
                     </div>
-                </div>
 
-                                        
-                <button type="submit" class="btn btn-primary mb-2">Submit</button>
                 </x-forms.post>
-
-
-                </div>
             </div>
         </div>
     </div>
-</div>
+
+    <div class="modal fade" id="formConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <x-forms.get>
+                    <table>
+                        <tbody>
+                        <tr id="speciestemplaterow" class="hidden">
+                            <td>
+                                <x-forms.select-from-pluck name="species_id[]" value="" :options="$species" required placeholder="-- choose species --" />
+                            </td>
+                            <td>
+                                <x-forms.textfield type="number" name="species_weight" value="" />
+                            </td>
+                            <td><button type="button" onclick="deleteSelectedRow(this)" class="btn btn-danger pull-right">-</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </x-forms.get>
+            </div>
+        </div>
+    </div>
 @endsection
