@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\DataTables\IslandDataTable;
 use App\Models\Fisherman;
@@ -44,6 +45,8 @@ class TripController extends Controller
          $locations = Location::pluck('location_name','id');
          $methods = Method::pluck('method_name','id');
          $trip = new Trip();
+         $trip->trip_date = Carbon::now();
+         $trip->number_of_fishers = 1;
 
          return view('landing.trips.create')
         ->withTrip($trip)
@@ -135,20 +138,24 @@ class TripController extends Controller
      */
     public function update(Request $request, Fisherman $fisherman, Trip $trip)
     {
-         $trip->update($request->all());
-
         $species = $request->input('species_id', []);
         $weight = $request->input('weight', []);
 
+        if (count($species) !== count($weight)) {
+            throw new \Exception('Mismatched species counts');
+        }
+        $trip->update($request->all());
+
+        $trip->species()->detach();
         for ($i=0; $i < count($species); $i++) {
             if ($species[$i] != '') {
                 $trip->species()->detach($species[$i], ['weight' => $weight[$i]]);
             }
-
         }
 
-        return redirect()->route('trip.index', $fisherman)
-                        ->with('success','trip updated successfully');
+        return redirect()
+            ->route('trip.index')
+            ->withSuccess('trip updated successfully');
     }
 
     /**

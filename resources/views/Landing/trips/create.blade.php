@@ -28,9 +28,15 @@
                     <div class="card">
                         <div class="card-header">{{ __('Create Trip') }} for {{ $fisherman->first_name }} {{ $fisherman->last_name }}</div>
                         <div class="card-body">
-                            <x-forms.textfield type="number" name="trip_hrs" label="Trip Hours" required />
-                            <x-forms.textfield name="number_of_fishers" label="Number of Fisherman Per Trip"  required />
-                            <x-forms.textfield type="date" name="trip_date" label="Enter trip date" required />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <x-forms.textfield type="number" name="trip_hrs" label="Trip Hours" value="{{ $trip->trip_hrs }}" required />
+                                </div>
+                                <div class="col-md-6">
+                                    <x-forms.textfield type="number" name="number_of_fishers" label="Number of Fisherman Per Trip" value="{{ $trip->number_of_fishers }}" min="1" required />
+                                </div>
+                            </div>
+                            <x-forms.textfield type="date" name="trip_date" label="Enter trip date" value="{{ optional($trip->trip_date)->format('Y-m-d') }}" required />
                             <x-forms.select-from-pluck name="location_id" label="Location name"  :options="$locations" required placeholder="-- choose fishing location --" />
                             <x-forms.select-from-pluck name="method_id" label="Fishing method"  :options="$methods" required placeholder="-- choose fishing method --" />
                             <table class="table" id="species_table">

@@ -1,3 +1,4 @@
+<p>Messages</p>
 @if(isset($errors) && $errors->any())
     <x-utils.alert type="danger" class="header-message">
         @foreach($errors->all() as $error)
