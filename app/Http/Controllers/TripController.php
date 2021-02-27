@@ -136,7 +136,7 @@ class TripController extends Controller
     public function update(Request $request, Fisherman $fisherman, Trip $trip)
     {
         $species = $request->input('species_id', []);
-        $weight = $request->input('weight', []);
+        $weight = $request->input('species_weight', []);
 
         if (count($species) !== count($weight)) {
             throw new \Exception('Mismatched species counts');
