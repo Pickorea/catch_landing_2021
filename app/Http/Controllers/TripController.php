@@ -14,9 +14,8 @@ use Illuminate\Support\Facades\Paginator;
 use App\Http\Requests\Landing\StoreFishermanRequest;
 use App\Http\Requests\Landing\UpdateFishermanRequest;
 use App\Exports\TripExport;
-Use Excel;
+use Excel;
 use Illuminate\Support\Facades\DB;
-
 
 class TripController extends Controller
 {
@@ -27,8 +26,7 @@ class TripController extends Controller
      */
     public function index()
     {
-
-        $trips = Fisherman ::with (['trips'])->paginate(5);
+        $trips = Fisherman ::with(['trips'])->paginate(5);
 
 
         return view('landing.trips.index')->withItems($trips);
@@ -41,14 +39,14 @@ class TripController extends Controller
      */
     public function create(Fisherman $fisherman)
     {
-         $species = Species::pluck('species_name','id');
-         $locations = Location::pluck('location_name','id');
-         $methods = Method::pluck('method_name','id');
-         $trip = new Trip();
-         $trip->trip_date = Carbon::now();
-         $trip->number_of_fishers = 1;
+        $species = Species::pluck('species_name', 'id');
+        $locations = Location::pluck('location_name', 'id');
+        $methods = Method::pluck('method_name', 'id');
+        $trip = new Trip();
+        $trip->trip_date = Carbon::now();
+        $trip->number_of_fishers = 1;
 
-         return view('landing.trips.create')
+        return view('landing.trips.create')
         ->withTrip($trip)
         ->withFisherman($fisherman)
         ->withSpecies($species)
@@ -78,7 +76,8 @@ class TripController extends Controller
             'trip_date' => $request->trip_date,
             'location_id' => $request->location_id,
             'method_id' => $request->method_id
-        ]);
+        ]
+        );
 
 
 
@@ -87,11 +86,10 @@ class TripController extends Controller
             if ($species[$i] != '') {
                 $trip->species()->attach($species[$i], ['weight' => $weight[$i]]);
             }
-
         }
 
 
-        return redirect()->route('fisherman.trip.index',$fisherman)
+        return redirect()->route('fisherman.trip.index', $fisherman)
         ->with('success', 'Trip created successfully');
     }
 
@@ -116,10 +114,9 @@ class TripController extends Controller
      */
     public function edit(Fisherman $fisherman, Trip $trip)
     {
-
-        $species = Species::pluck('species_name','id');
-        $locations = Location::pluck('location_name','id');
-        $methods = Method::pluck('method_name','id');
+        $species = Species::pluck('species_name', 'id');
+        $locations = Location::pluck('location_name', 'id');
+        $methods = Method::pluck('method_name', 'id');
 
         return view('landing.trips.edit')
             ->withFisherman($fisherman)
@@ -174,11 +171,11 @@ class TripController extends Controller
 
     public function ExportIntoExcel()
     {
-        return Excel::download(new TripExport,'triplist.csv');
+        return Excel::download(new TripExport, 'triplist.csv');
     }
 
     public function ExportIntoCsv()
     {
-        return Excel::download(new TripExport,'triplist.csv');
+        return Excel::download(new TripExport, 'triplist.csv');
     }
 }

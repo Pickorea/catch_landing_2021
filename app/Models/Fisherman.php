@@ -13,15 +13,13 @@ class Fisherman extends Model
 
     protected $fillable = ['island_id','first_name','last_name'];
 
-    public function island(){
-
+    public function island()
+    {
         return $this->belongsTo(Island::class);
     }
 
-    public function trips(){
-
+    public function trips()
+    {
         return $this->hasMany(Trip::class);
     }
-
-   
 }

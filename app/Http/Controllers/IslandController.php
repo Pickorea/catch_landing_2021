@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Paginator;
 use App\Http\Requests\Landing\StoreIslandRequest;
 use App\Http\Requests\Landing\UpdateIslandRequest;
 
-
 class IslandController extends Controller
 {
     /**
@@ -21,7 +20,7 @@ class IslandController extends Controller
     {
         $islands = Island::paginate(10);
         // dd($island);
-        return view('landing.islands.index')->with('islands',$islands);
+        return view('landing.islands.index')->with('islands', $islands);
     }
 
     /**
@@ -42,7 +41,6 @@ class IslandController extends Controller
      */
     public function store(Request $request)
     {
-        
         $islands = Island::create($request->all());
 
         return redirect()->route('island.index')
@@ -84,7 +82,7 @@ class IslandController extends Controller
         $island->update($request->all());
     
         return redirect()->route('island.index')
-                        ->with('success','island updated successfully');
+                        ->with('success', 'island updated successfully');
     }
 
     /**

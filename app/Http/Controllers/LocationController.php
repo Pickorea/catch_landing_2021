@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Paginator;
 use App\Http\Requests\Landing\StoreLocationRequest;
 use App\Http\Requests\Landing\UpdateLocationRequest;
 
-
 class LocationController extends Controller
 {
     /**
@@ -42,7 +41,6 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        
         $locations = Location::create($request->all());
 
         return redirect()->route('location.index')
@@ -84,7 +82,7 @@ class LocationController extends Controller
         $location->update($request->all());
     
         return redirect()->route('location.index')
-                        ->with('success','Location updated successfully');
+                        ->with('success', 'Location updated successfully');
     }
 
     /**
@@ -95,7 +93,6 @@ class LocationController extends Controller
      */
     public function destroy(Location $location)
     {
-        
         $location->delete();
 
         return redirect()->route('locations.index')

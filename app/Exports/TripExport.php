@@ -8,11 +8,10 @@ use Maatwebsite\Excel\Concerns\withHeadings;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Facades\Excel;
 
-class TripExport implements FromCollection,withHeadings
+class TripExport implements FromCollection, withHeadings
 {
-
-    public function headings():array{
-
+    public function headings():array
+    {
         return[
             'Island Name',
             'First Name',
@@ -21,9 +20,9 @@ class TripExport implements FromCollection,withHeadings
             'Nbrs of Fisherman' ,
              'Trip Date',
             'Fishing Area' ,
-            'Fishing Methods' ,     
+            'Fishing Methods' ,
             'Species Name',
-            'Weight'           
+            'Weight'
         ];
     }
     /**

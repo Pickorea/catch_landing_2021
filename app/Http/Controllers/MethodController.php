@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Paginator;
 use App\Http\Requests\Landing\StoreMethodRequest;
 use App\Http\Requests\Landing\UpdateMethodRequest;
 
-
 class MethodController extends Controller
 {
     /**
@@ -42,7 +41,6 @@ class MethodController extends Controller
      */
     public function store(Request $request)
     {
-        
         $methods = Method::create($request->all());
 
         return redirect()->route('method.index')
@@ -84,7 +82,7 @@ class MethodController extends Controller
         $method->update($request->all());
     
         return redirect()->route('method.index')
-                        ->with('success','Location updated successfully');
+                        ->with('success', 'Location updated successfully');
     }
 
     /**

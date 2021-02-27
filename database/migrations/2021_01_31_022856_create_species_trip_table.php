@@ -17,7 +17,7 @@ class CreateSpeciesTripTable extends Migration
             $table->id();
             $table->integer('trip_id')->unsigned();
             $table->integer('species_id')->unsigned();
-            $table->double('weight',8,2);
+            $table->double('weight', 8, 2);
             $table->timestamps();
         });
     }

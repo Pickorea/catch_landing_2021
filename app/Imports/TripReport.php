@@ -6,7 +6,7 @@ use App\Models\Trip;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\withHeadingRow;
 
-class TripReport implements ToModel,withHeadingRow
+class TripReport implements ToModel, withHeadingRow
 {
     /**
     * @param array $row

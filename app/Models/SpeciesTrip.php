@@ -19,15 +19,13 @@ class SpeciesTrip extends Model
         
     // }
 
-    public function location(){
-
+    public function location()
+    {
         return $this->belongsTo(Location::class);
-        
     }
 
-    public function method(){
-
+    public function method()
+    {
         return $this->belongsTo(Method::class);
-        
     }
 }

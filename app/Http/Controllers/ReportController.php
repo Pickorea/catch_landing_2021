@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\ReportService;
 use Illuminate\Support\Facades\DB;
+
 // use Illuminate\Support\Facades\Paginator;
 
 
@@ -32,8 +33,7 @@ class ReportController extends Controller
 
         // dd($tripReport);
 
-        return view('landing.reports.tripreport')->with('reports',$reports);
-
+        return view('landing.reports.tripreport')->with('reports', $reports);
     }
 
     /**

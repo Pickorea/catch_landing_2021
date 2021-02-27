@@ -8,6 +8,7 @@ use App\Http\Controllers\MethodController;
 use App\Http\Controllers\FishermanController;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\ReportController;
+
 // use App\Http\Controllers\HomeController;
 
 /*

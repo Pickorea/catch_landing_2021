@@ -14,9 +14,8 @@ class Island extends Model
     protected $fillable = ['island_name'];
 
 
-    public function fisherman(){
-
+    public function fisherman()
+    {
         return $this->hasMany(Fisherman::class);
-        
     }
 }

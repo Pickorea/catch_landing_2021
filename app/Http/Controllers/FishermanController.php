@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Paginator;
 use App\Http\Requests\Landing\StoreFishermanRequest;
 use App\Http\Requests\Landing\UpdateFishermanRequest;
 
-
 class FishermanController extends Controller
 {
     /**
@@ -43,7 +42,6 @@ class FishermanController extends Controller
      */
     public function store(Request $request)
     {
-        
         $fishermans = Fisherman::create($request->all());
 
         return redirect()->route('island.index')
@@ -90,7 +88,7 @@ class FishermanController extends Controller
         $fisherman->update($request->all());
     
         return redirect()->route('fisherman.index')
-                        ->with('success','fisherman updated successfully');
+                        ->with('success', 'fisherman updated successfully');
     }
 
     /**

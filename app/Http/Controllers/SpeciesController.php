@@ -28,7 +28,6 @@ class SpeciesController extends Controller
      */
     public function create()
     {
-
         return view('landing.species.create');
     }
 
@@ -80,7 +79,7 @@ class SpeciesController extends Controller
         $species->update($request->all());
     
         return redirect()->route('species.index')
-                        ->with('success','species updated successfully');
+                        ->with('success', 'species updated successfully');
     }
 
     /**

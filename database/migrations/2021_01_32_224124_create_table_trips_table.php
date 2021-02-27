@@ -18,9 +18,9 @@ class CreateTableTripsTable extends Migration
             $table->integer('fisherman_id');
             $table->integer('trip_hrs');
             $table->integer('number_of_fishers');
-             $table->date('trip_date');
-             $table->integer('location_id');
-             $table->integer('method_id');
+            $table->date('trip_date');
+            $table->integer('location_id');
+            $table->integer('method_id');
             $table->timestamps();
         });
     }
