@@ -143,10 +143,10 @@ class TripController extends Controller
         }
         $trip->update($request->all());
 
-        $trip->species()->detach();
+        // $trip->species()->detach();
         for ($i=0; $i < count($species); $i++) {
             if ($species[$i] != '') {
-                $trip->species()->detach($species[$i], ['weight' => $weight[$i]]);
+                $trip->species()->syncWithoutDetaching([$species[$i] => ['weight' => $weight[$i]]]);
             }
         }
 
