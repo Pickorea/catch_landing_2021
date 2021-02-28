@@ -84,7 +84,7 @@ class TripController extends Controller
 
         for ($i=0; $i < count($species); $i++) {
             if ($species[$i] != '') {
-                $trip->species()->attach($species[$i], ['weight' => $weight[$i]]);
+                $trip->species()->syncWithoutDetaching([$species[$i] => ['weight' => $weight[$i]]]);
             }
         }
 
