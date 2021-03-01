@@ -4,6 +4,7 @@ namespace App\Http\Requests\Landing;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Method;
+
 class StoreMethodRequest extends FormRequest
 {
     /**
