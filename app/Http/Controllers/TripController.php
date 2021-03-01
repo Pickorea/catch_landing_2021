@@ -144,11 +144,18 @@ class TripController extends Controller
         $trip->update($request->all());
 
         // $trip->species()->detach();
+//        for ($i=0; $i < count($species); $i++) {
+//            if ($species[$i] != '') {
+//                $trip->species()->syncWithoutDetaching([$species[$i] => ['weight' => $weight[$i]]]);
+//            }
+//        }
+        $species_pivot = [];
         for ($i=0; $i < count($species); $i++) {
             if ($species[$i] != '') {
-                $trip->species()->syncWithoutDetaching([$species[$i] => ['weight' => $weight[$i]]]);
+                $species_pivot[$species[$i]] = ['weight' => $weight[$i]];
             }
         }
+        $trip->species()->sync($species_pivot);
 
         return redirect()
             ->route('trip.index')
