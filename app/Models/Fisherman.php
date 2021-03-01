@@ -13,6 +13,19 @@ class Fisherman extends Model
 
     protected $fillable = ['island_id','first_name','last_name'];
 
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
+        'first_name' => 'required|string|unique:fishermans|max:191',
+        'last_name' => 'required|string|unique:fishermans|max:191',
+        'deleted_at' => 'nullable',
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable'
+    ];
+
     public function island()
     {
         return $this->belongsTo(Island::class);

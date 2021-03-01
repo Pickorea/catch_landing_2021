@@ -13,6 +13,18 @@ class Method extends Model
 
     protected $fillable = ['method_name'];
 
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
+        'method_name' => 'required|string|unique:methods|max:191',
+        'deleted_at' => 'nullable',
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable'
+    ];
+
     public function trip()
     {
         return $this->belongsTo(Trip::class);

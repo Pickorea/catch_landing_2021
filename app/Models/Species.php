@@ -13,6 +13,18 @@ class Species extends Model
 
     protected $fillable = ['species_name'];
 
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
+        'species_name' => 'required|string|unique:islands|max:191',
+        'deleted_at' => 'nullable',
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable'
+    ];
+
     public function trips()
     {
         return $this->belongsToMany(Trip::class, 'species_trip')->withPivot('weight');

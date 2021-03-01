@@ -13,6 +13,17 @@ class Island extends Model
 
     protected $fillable = ['island_name'];
 
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
+        'island_name' => 'required|string|unique:islands|max:191',
+        'deleted_at' => 'nullable',
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable'
+    ];
 
     public function fisherman()
     {
