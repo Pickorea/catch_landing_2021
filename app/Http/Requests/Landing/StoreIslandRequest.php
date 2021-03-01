@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Landing;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Island;
 
 class StoreIslandRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class StoreIslandRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +22,8 @@ class StoreIslandRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
-        return [
-            //
-        ];
+        return Island::$rules ;
     }
 }

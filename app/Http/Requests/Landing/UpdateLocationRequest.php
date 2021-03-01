@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Landing;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Location;
 
 class UpdateLocationRequest extends FormRequest
 {
@@ -21,10 +22,8 @@ class UpdateLocationRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
-        return [
-            //
-        ];
+        return Location::$rules ;
     }
 }

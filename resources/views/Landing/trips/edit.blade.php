@@ -77,7 +77,7 @@
                             <p>{{ json_encode($trip->species) }}</p>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                            <button type="submit" class="btn btn-primary mb-2">Update</button>
                         </div>
                     </div>
                 </x-forms.patch>

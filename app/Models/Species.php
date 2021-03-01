@@ -19,7 +19,7 @@ class Species extends Model
      * @var array
      */
     public static $rules = [
-        'species_name' => 'required|string|unique:islands|max:191',
+        'species_name' => 'required|string|unique:species|max:191',
         'deleted_at' => 'nullable',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'

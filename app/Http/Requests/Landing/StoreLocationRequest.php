@@ -3,9 +3,9 @@
 namespace App\Http\Requests\Landing;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Method;
+use App\Models\Location;
 
-class UpdateMethodRequest extends FormRequest
+class StoreLocationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -17,13 +17,13 @@ class UpdateMethodRequest extends FormRequest
         return true;
     }
 
-     /**
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
     public function rules(): array
     {
-        return Method::$rules ;
+        return Location::$rules ;
     }
 }

@@ -21,6 +21,7 @@ class Fisherman extends Model
     public static $rules = [
         'first_name' => 'required|string|unique:fishermans|max:191',
         'last_name' => 'required|string|unique:fishermans|max:191',
+        'island_id' => 'required|string|unique:fishermans|max:191',
         'deleted_at' => 'nullable',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'

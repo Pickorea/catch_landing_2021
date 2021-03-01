@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Landing;
 
 use Illuminate\Foundation\Http\FormRequest;
-
-class StoreFishermanRequest extends FormRequest
+use App\Models\Method;
+class StoreMethodRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -16,15 +16,13 @@ class StoreFishermanRequest extends FormRequest
         return true;
     }
 
-    /**
+     /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
-        return [
-            //
-        ];
+        return Method::$rules ;
     }
 }

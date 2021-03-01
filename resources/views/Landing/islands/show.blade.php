@@ -55,8 +55,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                    /* obj is a fisherman object*/
-                                    
+                                                                                  
                                                         @foreach($item->fisherman as $obj) 
                                                             <tr>                       
                                                                 <th scope="row">{{$obj->id}}</th>

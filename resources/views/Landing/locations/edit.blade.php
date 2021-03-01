@@ -13,7 +13,7 @@
                                 <x-forms.textfield type="text" name="location_name" label="Location Name" value="{{$item->location_name}}"/>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                <button type="submit" class="btn btn-primary mb-2">Update</button>
                             </div>
                         </div>
                     </x-forms.patch>

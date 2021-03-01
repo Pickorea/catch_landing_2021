@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Landing;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Island;
 
 class UpdateIslandRequest extends FormRequest
 {
@@ -16,15 +17,13 @@ class UpdateIslandRequest extends FormRequest
         return false;
     }
 
-    /**
+     /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
-        return [
-            //
-        ];
+        return Island::$rules ;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Requests;
 use Illuminate\Support\Facades\Paginator;
 use App\Http\Requests\Landing\StoreSpeciesRequest;
 use App\Http\Requests\Landing\UpdateSpeciesRequest;
@@ -37,7 +37,7 @@ class SpeciesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSpeciesRequest $request)
     {
         $species = Species::create($request->all());
 

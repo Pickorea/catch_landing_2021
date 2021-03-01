@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Landing;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Method;
 
-class UpdateMethodRequest extends FormRequest
+class StoreReportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,16 +13,18 @@ class UpdateMethodRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
-     /**
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
-    public function rules(): array
+    public function rules()
     {
-        return Method::$rules ;
+        return [
+            //
+        ];
     }
 }

@@ -39,7 +39,7 @@ class IslandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreIslandRequest $request)
     {
         $islands = Island::create($request->all());
 
@@ -77,7 +77,7 @@ class IslandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Island $island)
+    public function update(UpdateIslandRequest $request, Island $island)
     {
         $island->update($request->all());
     
