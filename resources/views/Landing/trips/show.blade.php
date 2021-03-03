@@ -21,7 +21,7 @@
                         </div>
 
                         <div class="row">
-                            <label class="col-md-2">trip date</label>
+                            <label class="col-md-2">Trip date</label>
                             <p class="col-md-10">{{ optional($trip->trip_date)->format('d M Y') }}</p>
                         </div>
 
