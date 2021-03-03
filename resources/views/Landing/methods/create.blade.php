@@ -10,7 +10,7 @@
                         <div class="card-header">{{ __('Create Method') }}
                         </div>
                         <div class="card-body">
-                            <x-forms.textfield type="text" name="method_name" label="Method Name"  />
+                            <x-forms.textfield type="text" name="method_name" label="Method Name" required />
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary mb-2">Submit</button>
