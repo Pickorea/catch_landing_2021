@@ -24,6 +24,6 @@ class UpdateSpeciesRequest extends FormRequest
      */
     public function rules(): array
     {
-        return Species::$rules ;
+        return Species::$rules;
     }
 }

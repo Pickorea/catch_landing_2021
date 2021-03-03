@@ -24,6 +24,6 @@ class StoreMethodRequest extends FormRequest
      */
     public function rules(): array
     {
-        return Method::$rules ;
+        return Method::$rules;
     }
 }

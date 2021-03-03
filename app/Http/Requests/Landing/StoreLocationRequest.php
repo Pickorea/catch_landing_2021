@@ -24,6 +24,6 @@ class StoreLocationRequest extends FormRequest
      */
     public function rules(): array
     {
-        return Location::$rules ;
+        return Location::$rules;
     }
 }

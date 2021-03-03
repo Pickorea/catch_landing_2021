@@ -9,7 +9,7 @@
                         <div class="card-header">{{ __('Edit Method') }}
                         </div>
                         <div class="card-body">
-                            <x-forms.textfield type="text" name="island_name" label="Island Name" value="{{ $item->method_name}}" />
+                            <x-forms.textfield type="text" name="method_name" label="Method Name" value="{{ $item->method_name}}" />
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary mb-2">Update</button>

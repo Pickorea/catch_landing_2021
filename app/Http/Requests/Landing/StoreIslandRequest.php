@@ -24,6 +24,6 @@ class StoreIslandRequest extends FormRequest
      */
     public function rules(): array
     {
-        return Island::$rules ;
+        return Island::$rules;
     }
 }

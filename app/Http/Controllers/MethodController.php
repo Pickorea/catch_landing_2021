@@ -39,7 +39,7 @@ class MethodController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreMethodRequest $request)
     {
         $methods = Method::create($request->all());
 
@@ -77,7 +77,7 @@ class MethodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Method $method)
+    public function update(UpdateMethodRequest $request, Method $method)
     {
         $method->update($request->all());
     

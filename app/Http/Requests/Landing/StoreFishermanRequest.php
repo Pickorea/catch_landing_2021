@@ -24,6 +24,6 @@ class StoreFishermanRequest extends FormRequest
      */
     public function rules(): array
     {
-        return Fisherman::$rules ;
+        return Fisherman::$rules;
     }
 }

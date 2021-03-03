@@ -44,7 +44,7 @@
                                     <x-forms.textfield type="number" name="number_of_fishers" label="Number of Fisherman Per Trip" value="{{ $trip->number_of_fishers }}" min="1" required />
                                 </div>
                             </div>
-                            <x-forms.textfield type="date" name="trip_date" label="Enter trip date" value="{{ optional($trip->trip_date)->format('Y-m-d') }}" required />
+                            <x-forms.datefield type="date" name="trip_date" label="Enter trip date" value="{{ optional($trip->trip_date)->format('Y-m-d') }}" required />
                             <x-forms.select-from-pluck name="location_id" label="Location name" value="{{ $trip->location_id }}" :options="$locations" placeholder="-- choose fishing location --" />
                             <x-forms.select-from-pluck name="method_id" label="Fishing method" value="{{ $trip->method_id }}" :options="$methods" placeholder="-- choose fishing method --" />
 
