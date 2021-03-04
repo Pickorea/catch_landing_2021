@@ -41,14 +41,14 @@ class IslandService extends BaseService
 
     public function datatables($search = '')
     {
-        $user = Auth::user();
-        if (! $user->can('kiims.view')) {
-            throw new GeneralException(__('You do not have access to do that.'));
-        }
+        // $user = Auth::user();
+        // if (! $user->can('kiims.view')) {
+        //     throw new GeneralException(__('You do not have access to do that.'));
+        // }
         $query = $this->model->query();
 
         if (! empty($search)) {
-            $query->whereLike(['name'], $search);
+            $query->whereLike(['island_name'], $search);
         }
 
         return $query;

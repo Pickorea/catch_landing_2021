@@ -9,6 +9,7 @@ use App\Models\Island;
 use Illuminate\Support\Facades\Paginator;
 use App\Http\Requests\Landing\StoreFishermanRequest;
 use App\Http\Requests\Landing\UpdateFishermanRequest;
+use Yajra\DataTables\Facades\DataTables;
 
 class FishermanController extends Controller
 {

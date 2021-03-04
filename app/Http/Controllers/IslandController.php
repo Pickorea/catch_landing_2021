@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Paginator;
 use App\Http\Requests\Landing\StoreIslandRequest;
 use App\Http\Requests\Landing\UpdateIslandRequest;
 use App\Services\IslandService;
+use Yajra\DataTables\Facades\DataTables;
 
 class IslandController extends Controller
 {

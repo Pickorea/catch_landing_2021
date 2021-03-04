@@ -30,7 +30,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/home', HomeController::class, 'index')->name('home');
-
+Route::post('datatables', [IslandController::class, 'datatables'])->name('datatables');
 Route::resource('/island', IslandController::class);
 Route::resource('/species', SpeciesController::class);
 Route::resource('/location', LocationController::class);
