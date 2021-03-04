@@ -27,7 +27,7 @@
             <h2>Datatables</h2>
 
             <table class="table table-hover mx-0 display" id="data-table" data-page-length="100"
-                   data-order='[[ 0, "desc" ]]' data-href="{{ route("datatables") }}">
+                   data-order='[[ 0, "desc" ]]' data-href="{{ route("island.datatables") }}">
                 <thead>
                 <tr>
                     <th>Title</th>

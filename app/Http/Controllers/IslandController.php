@@ -35,9 +35,9 @@ class IslandController extends Controller
      */
     public function index()
     {
-        $islands = Island::paginate(10);
-        // dd($island);
-        return view('landing.islands.index')->with('islands', $islands);
+        // $islands = Island::paginate(10);
+        // // dd($island);
+        return view('landing.islands.index');//->with('islands', $islands);
     }
 
     /**
