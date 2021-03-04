@@ -8,9 +8,25 @@ use App\Models\Island;
 use Illuminate\Support\Facades\Paginator;
 use App\Http\Requests\Landing\StoreIslandRequest;
 use App\Http\Requests\Landing\UpdateIslandRequest;
+use App\Services\IslandService;
 
 class IslandController extends Controller
 {
+    
+    /**
+     * @var IslandService
+     */
+    protected $service;
+
+    /**
+    * SpeciesController constructor.
+    * @param IslandService $service
+    */
+    public function __construct(IslandService $service)
+    {
+        $this->service = $service;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +57,7 @@ class IslandController extends Controller
      */
     public function store(StoreIslandRequest $request)
     {
-        $islands = Island::create($request->all());
+        $item = $this->service->store($request->validated());
 
         return redirect()->route('island.index')
         ->with('success', 'Island created successfully');
@@ -79,7 +95,7 @@ class IslandController extends Controller
      */
     public function update(UpdateIslandRequest $request, Island $island)
     {
-        $island->update($request->all());
+        $this->service->update($island, $request->validated());
     
         return redirect()->route('island.index')
                         ->with('success', 'island updated successfully');
@@ -93,8 +109,7 @@ class IslandController extends Controller
      */
     public function destroy(Island $island)
     {
-        // dd($island);
-        $island->delete();
+        $this->service->delete($island);
 
         return redirect()->route('island.index')
             ->with('success', 'Product deleted successfully');
