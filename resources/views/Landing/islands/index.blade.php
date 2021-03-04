@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@push('after-styles')
+    <link media="all" type="text/css" rel="stylesheet" href="{{ url('/') }}/css/dataTables.bootstrap4.min.css" />
+@endpush
+
 @section('content')
 
 <div class="container">
