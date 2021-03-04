@@ -8,9 +8,24 @@ use App\Models\Method;
 use Illuminate\Support\Facades\Paginator;
 use App\Http\Requests\Landing\StoreMethodRequest;
 use App\Http\Requests\Landing\UpdateMethodRequest;
+use App\Services\MethodService;
 
 class MethodController extends Controller
 {
+    
+    /**
+     * @var MethodService
+     */
+    protected $service;
+
+    /**
+    * SpeciesController constructor.
+    * @param MethodService $service
+    */
+    public function __construct(MethodService $service)
+    {
+        $this->service = $service;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +56,7 @@ class MethodController extends Controller
      */
     public function store(StoreMethodRequest $request)
     {
-        $methods = Method::create($request->all());
+        $item = $this->service->store($request->validated());
 
         return redirect()->route('method.index')
         ->with('success', 'Location created successfully');
@@ -79,7 +94,7 @@ class MethodController extends Controller
      */
     public function update(UpdateMethodRequest $request, Method $method)
     {
-        $method->update($request->all());
+        $this->service->update($method, $request->validated());
     
         return redirect()->route('method.index')
                         ->with('success', 'Location updated successfully');
@@ -93,7 +108,7 @@ class MethodController extends Controller
      */
     public function destroy(Method $method)
     {
-        $location->delete();
+        $this->service->delete($method);
 
         return redirect()->route('method.index')
             ->with('success', 'Location deleted successfully');

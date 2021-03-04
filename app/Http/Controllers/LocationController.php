@@ -8,9 +8,23 @@ use App\Models\Location;
 use Illuminate\Support\Facades\Paginator;
 use App\Http\Requests\Landing\StoreLocationRequest;
 use App\Http\Requests\Landing\UpdateLocationRequest;
+use App\Services\LocationService;
 
 class LocationController extends Controller
 {
+    /**
+     * @var LocationService
+     */
+    protected $service;
+
+    /**
+    * SpeciesController constructor.
+    * @param LocationService $service
+    */
+    public function __construct(LocationService $service)
+    {
+        $this->service = $service;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +55,7 @@ class LocationController extends Controller
      */
     public function store(StoreLocationRequest $request)
     {
-        $locations = Location::create($request->all());
+        $item = $this->service->store($request->validated());
 
         return redirect()->route('location.index')
         ->with('success', 'Location created successfully');
@@ -77,9 +91,9 @@ class LocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Location $location)
+    public function update(UpdateLocationRequest $request, Location $location)
     {
-        $location->update($request->all());
+        $this->service->update($location, $request->validated());
     
         return redirect()->route('location.index')
                         ->with('success', 'Location updated successfully');
@@ -93,9 +107,9 @@ class LocationController extends Controller
      */
     public function destroy(Location $location)
     {
-        $location->delete();
+        $this->service->delete($location);
 
-        return redirect()->route('locations.index')
+        return redirect()->route('location.index')
             ->with('success', 'Location deleted successfully');
     }
 }
