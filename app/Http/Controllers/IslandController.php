@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\DataTables\IslandDataTable;
+// use App\DataTables\IslandDataTable;
 use App\Models\Island;
 use Illuminate\Support\Facades\Paginator;
 use App\Http\Requests\Landing\StoreIslandRequest;
