@@ -21,6 +21,13 @@
 
 
     @yield('header')
+
+    @stack('before-styles')
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  
+    <livewire:styles />
+    @stack('after-styles')
 </head>
 <body>
 <div id="app">

@@ -115,4 +115,22 @@ class IslandController extends Controller
         return redirect()->route('island.index')
             ->with('success', 'Product deleted successfully');
     }
+
+    public function datatables(ViewRequest $request)
+    {
+        $search = $request->get('search', '');
+
+        if (is_array($search)) {
+            $search = $search['value'];
+        }
+        $query = $this->service->datatables($search);
+
+        $datatables = DataTables::make($query)
+            ->editColumn('created_at', function ($row) {
+                return $row->created_at ? with(new Carbon($row->created_at))->format('Y-m-d') : '';
+            })
+            ->make(true);
+
+        return $datatables;
+    }
 }

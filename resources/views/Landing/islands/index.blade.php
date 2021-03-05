@@ -1,15 +1,12 @@
 @extends('layouts.app')
 
-@push('after-styles')
-    <link media="all" type="text/css" rel="stylesheet" href="{{ url('/') }}/css/dataTables.bootstrap4.min.css" />
-@endpush
-
 @section('content')
-
-<div class="container">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
             <div class="card">
+           
+        <div class="row">
 
             <div class="col">
                 <h3>@lang('Islands')</h3>
@@ -20,14 +17,12 @@
                         <input type="text" class="form-control" name="search" id="search" value="{{ old('search') }}" placeholder="{{ __('Search') }}">
                     </div>
                     <button type="button" class="btn btn-primary" id="searchBtn">@lang('Search')</button>
-                    {{--<a href="{{ route() }}" class="btn btn-outline-info" id="exportBtn">@lang('Export')</a>--}}
+                    
 
                 </form>
             </div>
         </div>
-      
-
-      
+       
             <h2>Datatables</h2>
 
             <table class="table table-hover mx-0 display" id="data-table" data-page-length="100"
@@ -39,15 +34,19 @@
                     <th width="80px">
                     
                             <a href="{{ route('island.create') }}"><i class="fas fa-plus"></i></a>
-                      
+                
                     </th>
                 </tr>
                 </thead>
                 <tbody>
                 </tbody>
             </table>
+
+      
+            </div>
         </div>
-            
+
+    </div>          
 @endsection
 
 @push('after-scripts')
@@ -55,7 +54,7 @@
     <script src="{{ url('/') }}/js/dataTables.bootstrap4.min.js"></script>
     <script>
         let datatable = (function () {
-           {{--let permissionEdit = ('{{ $logged_in_user->can() }}' == '1');--}}
+            {{--let permissionEdit = ('{{ $logged_in_user->can('') }}' == '1');--}}
 
             var table;
 
@@ -146,3 +145,4 @@
 
     </script>
 @endpush
+
