@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Services\MethodService;
 use App\Models\Method;
 use App\Services\BaseService;
 use Illuminate\Support\Facades\Auth;

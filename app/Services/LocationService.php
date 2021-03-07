@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Services\LocationService;
 use App\Models\Location;
 use App\Services\BaseService;
 use Illuminate\Support\Facades\Auth;
