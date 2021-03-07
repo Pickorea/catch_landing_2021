@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Landing\ViewRequest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\DataTables\LocationDataTable;
 use App\Models\Method;
@@ -33,9 +35,9 @@ class MethodController extends Controller
      */
     public function index()
     {
-        $methods = Method::paginate(10);
+        // $methods = Method::paginate(10);
         // dd($Location);
-        return view('landing.methods.index')->withItems($methods);
+        return view('landing.methods.index');//->withItems($methods);
     }
 
     /**

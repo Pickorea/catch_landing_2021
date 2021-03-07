@@ -35,7 +35,7 @@ class IslandController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ViewRequest $request)
     {
         // $islands = Island::paginate(10);
         // // dd($island);

@@ -34,6 +34,7 @@ Route::post('island/datatables', [IslandController::class, 'datatables'])->name(
 Route::resource('/island', IslandController::class);
 Route::resource('/species', SpeciesController::class);
 Route::resource('/location', LocationController::class);
+Route::post('method/datatables', [MethodController::class, 'datatables'])->name('method.datatables');
 Route::resource('/method', MethodController::class);
 Route::resource('/fisherman', FishermanController::class);
 Route::resource('/island.fisherman', FishermanController::class);
