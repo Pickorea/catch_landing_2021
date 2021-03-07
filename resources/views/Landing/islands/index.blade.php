@@ -53,7 +53,8 @@
     <script>
         let datatable = (function () {
             {{--let permissionEdit = ('{{ $logged_in_user->can('') }}' == '1');--}}
-
+            let permissionEdit = true;
+            
             var table;
             var init = function (item) {
                 var htmlTable = $(item);
@@ -81,22 +82,14 @@
                     columnDefs: [
                         {
                             "render": function ( data, type, row ) {
-                                value = data;
-                                return value;
-
-                            },
-                            "targets": 1
-                        },
-                        {
-                            "render": function ( data, type, row ) {
-                                value = '<a href="{{ route('island.index') }}/'+row['id']+'"><i class="fas fa-eye"></i></a>';
+                                let value = '<a href="{{ route('island.index') }}/'+row['id']+'"><i class="fas fa-eye"></i>View</a>';
                                  if (permissionEdit) {
-                                    value += ' <a href="{{ route('island.index') }}/'+row['id']+'/edit"><i class="fas fa-edit"></i></a>' ;
+                                    value += ' <a href="{{ route('island.index') }}/'+row['id']+'/edit"><i class="fas fa-edit"></i>Edit</a>' ;
                                 }
                                  return value;
 
                             },
-                            "targets": 1
+                            "targets": 2
                         },
                     ]
                 });
