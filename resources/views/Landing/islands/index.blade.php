@@ -77,6 +77,27 @@
                         {data: 'island_name', name: 'island_name'},
                         {data: 'created_at', name: 'created_at'},
                         {data: 'id',  name: 'id', searchable: false, sortable: false }
+                    ],
+                    columnDefs: [
+                        {
+                            "render": function ( data, type, row ) {
+                                value = data;
+                                return value;
+
+                            },
+                            "targets": 1
+                        },
+                        {
+                            "render": function ( data, type, row ) {
+                                value = '<a href="{{ route('island.index') }}/'+row['id']+'"><i class="fas fa-eye"></i></a>';
+                                 if (permissionEdit) {
+                                    value += ' <a href="{{ route('island.index') }}/'+row['id']+'/edit"><i class="fas fa-edit"></i></a>' ;
+                                }
+                                 return value;
+
+                            },
+                            "targets": 1
+                        },
                     ]
                 });
             };
