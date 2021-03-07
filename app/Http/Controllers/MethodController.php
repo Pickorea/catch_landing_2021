@@ -11,10 +11,11 @@ use Illuminate\Support\Facades\Paginator;
 use App\Http\Requests\Landing\StoreMethodRequest;
 use App\Http\Requests\Landing\UpdateMethodRequest;
 use App\Services\MethodService;
+use Yajra\DataTables\Facades\DataTables;
 
 class MethodController extends Controller
 {
-    
+
     /**
      * @var MethodService
      */
@@ -97,7 +98,7 @@ class MethodController extends Controller
     public function update(UpdateMethodRequest $request, Method $method)
     {
         $this->service->update($method, $request->validated());
-    
+
         return redirect()->route('method.index')
                         ->with('success', 'Location updated successfully');
     }
@@ -114,5 +115,23 @@ class MethodController extends Controller
 
         return redirect()->route('method.index')
             ->with('success', 'Location deleted successfully');
+    }
+
+    public function datatables(ViewRequest $request)
+    {
+        $search = $request->get('search', '');
+
+        if (is_array($search)) {
+            $search = $search['value'];
+        }
+        $query = $this->service->datatables($search);
+
+        $datatables = DataTables::make($query)
+            ->editColumn('created_at', function ($row) {
+                return $row->created_at ? with(new Carbon($row->created_at))->format('Y-m-d') : '';
+            })
+            ->make(true);
+
+        return $datatables;
     }
 }
