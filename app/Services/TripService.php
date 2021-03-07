@@ -7,7 +7,6 @@ use App\Exceptions\GeneralException;
 use App\Services\BaseService;
 use Illuminate\Support\Facades\Auth;
 
-
 /**
  * Class TripService.
  */

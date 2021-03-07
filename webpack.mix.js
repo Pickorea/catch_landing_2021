@@ -14,7 +14,10 @@ const mix = require('laravel-mix');
 mix    // Datatables for BS 4
     .copy('node_modules/datatables.net-bs4/css', 'public/css')
     .copy('node_modules/datatables.net-bs4/js', 'public/js')
-    .copy('node_modules/datatables.net/js', 'public/js');
+    .copy('node_modules/datatables.net/js', 'public/js')
+    .copy('node_modules/@fortawesome/fontawesome-free/css/all.min.css', 'public/css/fontawesome.min.css')
+    .copy('node_modules/@fortawesome/fontawesome-free/js/all.min.js', 'public/js/fontawesome.min.js')
+    .copy('node_modules/@fortawesome/fontawesome-free/webfonts/*', 'public/webfonts');
 
 mix.js('resources/js/app.js', 'public/js')
     .vue()

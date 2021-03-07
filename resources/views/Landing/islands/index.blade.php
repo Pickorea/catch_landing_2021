@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+
+@push('after-styles')
+    <link href="{{ url('/') }}/css/fontawesome.min.css" rel="stylesheet">
+@endpush
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -50,11 +55,12 @@
 @push('after-scripts')
     <script src="{{ url('/') }}/js/jquery.dataTables.js"></script>
     <script src="{{ url('/') }}/js/dataTables.bootstrap4.js"></script>
+    <script src="{{ url('/') }}/js/fontawesome.js"></script>
     <script>
         let datatable = (function () {
             {{--let permissionEdit = ('{{ $logged_in_user->can('') }}' == '1');--}}
             let permissionEdit = true;
-            
+
             var table;
             var init = function (item) {
                 var htmlTable = $(item);
