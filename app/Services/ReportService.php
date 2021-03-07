@@ -2,7 +2,6 @@
 
     namespace App\Services;
 
-
     use App\Models\SpeciesTrip;
 
     // use Illuminate\Support\Facades\Paginator;

@@ -11,7 +11,7 @@ use App\Services\SpeciesService;
 
 class SpeciesController extends Controller
 {
-      /**
+    /**
      * @var SpeciesService
      */
     protected $service;

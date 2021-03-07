@@ -17,11 +17,11 @@ class UpdateSpeciesRequest extends FormRequest
         return true;
     }
 
-     /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
+    /**
+    * Get the validation rules that apply to the request.
+    *
+    * @return array
+    */
     public function rules(): array
     {
         return Species::$rules;
