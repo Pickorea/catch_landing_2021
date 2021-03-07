@@ -4,66 +4,63 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-            <div class="card">
-           
-        <div class="row">
-
-            <div class="col">
-                <h3>@lang('Islands')</h3>
-            </div>
-            <div class="col-auto">
-                <form method="POST" id="search-form" class="form-inline" role="form">
-                    <div class="form-group float-right">
-                        <input type="text" class="form-control" name="search" id="search" value="{{ old('search') }}" placeholder="{{ __('Search') }}">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col">
+                                <h3>@lang('Islands')</h3>
+                            </div>
+                            <div class="col-auto">
+                                <form method="POST" id="search-form" class="form-inline" role="form">
+                                    <div class="form-group float-right">
+                                        <input type="text" class="form-control" name="search" id="search" value="{{ old('search') }}" placeholder="{{ __('Search') }}">
+                                    </div>
+                                    <button type="button" class="btn btn-primary" id="searchBtn">@lang('Search')</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <button type="button" class="btn btn-primary" id="searchBtn">@lang('Search')</button>
-                    
+                    <div class="card-body">
+                        <h2>Datatables</h2>
 
-                </form>
+                        <table class="table table-hover mx-0 display" id="data-table" data-page-length="100"
+                               data-order='[[ 0, "desc" ]]' data-href="{{ route("island.datatables") }}">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Created at</th>
+                                <th width="80px">
+                                    <a href="{{ route('island.create') }}"><i class="fas fa-plus"></i>+</a>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+
             </div>
         </div>
-       
-            <h2>Datatables</h2>
-
-            <table class="table table-hover mx-0 display" id="data-table" data-page-length="100"
-                   data-order='[[ 0, "desc" ]]' data-href="{{ route("island.datatables") }}">
-                <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Created at</th>
-                    <th width="80px">
-                    
-                            <a href="{{ route('island.create') }}"><i class="fas fa-plus"></i></a>
-                
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-
-      
-            </div>
-        </div>
-
-    </div>          
+    </div>
 @endsection
 
 @push('after-scripts')
-    <script src="{{ url('/') }}/js/jquery.dataTables.min.js"></script>
-    <script src="{{ url('/') }}/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ url('/') }}/js/jquery.dataTables.js"></script>
+    <script src="{{ url('/') }}/js/dataTables.bootstrap4.js"></script>
     <script>
         let datatable = (function () {
             {{--let permissionEdit = ('{{ $logged_in_user->can('') }}' == '1');--}}
 
             var table;
-
             var init = function (item) {
                 var htmlTable = $(item);
+                console.log(item, htmlTable);
                 table = htmlTable.DataTable({
                     searching: false,
                     bLengthChange: false,
-                    order: [[1, "asc"]],
                     searchDelay: 500,
                     processing: true,
                     serverSide: true,
@@ -80,27 +77,6 @@
                         {data: 'island_name', name: 'island_name'},
                         {data: 'created_at', name: 'created_at'},
                         {data: 'id',  name: 'id', searchable: false, sortable: false }
-                    ],
-                    columnDefs: [
-                        {
-                            "render": function ( data, type, row ) {
-                                value = data;
-                                return value;
-
-                            },
-                            "targets": 1
-                        },
-                        {
-                            "render": function ( data, type, row ) {
-                                value = '<a href="{{ route('island.index') }}/'+row['id']+'"><i class="fas fa-eye"></i></a>';
-                                 if (permissionEdit) {
-                                    value += ' <a href="{{ route('island.index') }}/'+row['id']+'/edit"><i class="fas fa-edit"></i></a>' ;
-                                }
-                                 return value;
-
-                            },
-                            "targets": 2
-                        },
                     ]
                 });
             };
@@ -129,6 +105,7 @@
             };
 
         })();
+
 
         $(function() {
             console.log('Starting Page Ready');

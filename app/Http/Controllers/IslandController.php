@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Landing\ViewRequest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 // use App\DataTables\IslandDataTable;
 use App\Models\Island;
@@ -13,7 +15,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 class IslandController extends Controller
 {
-    
+
     /**
      * @var IslandService
      */
@@ -97,7 +99,7 @@ class IslandController extends Controller
     public function update(UpdateIslandRequest $request, Island $island)
     {
         $this->service->update($island, $request->validated());
-    
+
         return redirect()->route('island.index')
                         ->with('success', 'island updated successfully');
     }

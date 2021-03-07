@@ -11,6 +11,11 @@ const mix = require('laravel-mix');
  |
  */
 
+mix    // Datatables for BS 4
+    .copy('node_modules/datatables.net-bs4/css', 'public/css')
+    .copy('node_modules/datatables.net-bs4/js', 'public/js')
+    .copy('node_modules/datatables.net/js', 'public/js');
+
 mix.js('resources/js/app.js', 'public/js')
     .vue()
     .sass('resources/sass/app.scss', 'public/css');
