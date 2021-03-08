@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Landing\ViewRequest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\DataTables\LocationDataTable;
 use App\Models\Location;
 use Illuminate\Support\Facades\Paginator;
 use App\Http\Requests\Landing\StoreLocationRequest;
 use App\Http\Requests\Landing\UpdateLocationRequest;
 use App\Services\LocationService;
+use Yajra\DataTables\Facades\DataTables;
 
 class LocationController extends Controller
 {
@@ -32,9 +34,8 @@ class LocationController extends Controller
      */
     public function index()
     {
-        $locations = Location::paginate(10);
-        // dd($Location);
-        return view('landing.Locations.index')->withItems($locations);
+      
+        return view('landing.Locations.index');
     }
 
     /**
@@ -111,5 +112,23 @@ class LocationController extends Controller
 
         return redirect()->route('location.index')
             ->with('success', 'Location deleted successfully');
+    }
+
+    public function datatables(ViewRequest $request)
+    {
+        $search = $request->get('search', '');
+
+        if (is_array($search)) {
+            $search = $search['value'];
+        }
+        $query = $this->service->datatables($search);
+
+        $datatables = DataTables::make($query)
+            ->editColumn('created_at', function ($row) {
+                return $row->created_at ? with(new Carbon($row->created_at))->format('Y-m-d') : '';
+            })
+            ->make(true);
+
+        return $datatables;
     }
 }

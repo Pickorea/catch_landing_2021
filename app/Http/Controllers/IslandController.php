@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Landing\ViewRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-// use App\DataTables\IslandDataTable;
 use App\Models\Island;
 use Illuminate\Support\Facades\Paginator;
 use App\Http\Requests\Landing\StoreIslandRequest;
@@ -37,9 +36,8 @@ class IslandController extends Controller
      */
     public function index(ViewRequest $request)
     {
-        // $islands = Island::paginate(10);
-        // // dd($island);
-        return view('landing.islands.index');//->with('islands', $islands);
+      
+        return view('landing.islands.index');
     }
 
     /**

@@ -32,7 +32,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::get('/home', HomeController::class, 'index')->name('home');
 Route::post('island/datatables', [IslandController::class, 'datatables'])->name('island.datatables');
 Route::resource('/island', IslandController::class);
+Route::post('species/datatables', [SpeciesController::class, 'datatables'])->name('species.datatables');
 Route::resource('/species', SpeciesController::class);
+Route::post('location/datatables', [LocationController::class, 'datatables'])->name('location.datatables');
 Route::resource('/location', LocationController::class);
 Route::post('method/datatables', [MethodController::class, 'datatables'])->name('method.datatables');
 Route::resource('/method', MethodController::class);

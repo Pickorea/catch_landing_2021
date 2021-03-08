@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Landing\ViewRequest;
+use Carbon\Carbon;
 use Illuminate\Http\Requests;
 use Illuminate\Support\Facades\Paginator;
 use App\Http\Requests\Landing\StoreSpeciesRequest;
 use App\Http\Requests\Landing\UpdateSpeciesRequest;
 use App\Models\Species;
 use App\Services\SpeciesService;
+use Yajra\DataTables\Facades\DataTables;
 
 class SpeciesController extends Controller
 {
@@ -109,5 +112,23 @@ class SpeciesController extends Controller
 
         return redirect()->route('species.index')
         ->with('success', 'Product deleted successfully');
+    }
+
+    public function datatables(ViewRequest $request)
+    {
+        $search = $request->get('search', '');
+
+        if (is_array($search)) {
+            $search = $search['value'];
+        }
+        $query = $this->service->datatables($search);
+
+        $datatables = DataTables::make($query)
+            ->editColumn('created_at', function ($row) {
+                return $row->created_at ? with(new Carbon($row->created_at))->format('Y-m-d') : '';
+            })
+            ->make(true);
+
+        return $datatables;
     }
 }
