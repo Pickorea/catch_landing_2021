@@ -23,15 +23,15 @@ class IslandService extends BaseService
 
     public function searchPaginate($search = null)
     {
-        $user = Auth::user();
-        if (! $user->can('kiims.view')) {
-            throw new GeneralException(__('You do not have access to do that.'));
-        }
+        // $user = Auth::user();
+        // if (! $user->can('kiims.view')) {
+        //     throw new GeneralException(__('You do not have access to do that.'));
+        // }
 
         $query = $this->model->query();
         if (! empty($search)) {
             $search = '%';
-            $query->where('name', 'like', $search);
+            $query->where('island_name', 'like', $search);
         }
 
         return $query->paginate();
