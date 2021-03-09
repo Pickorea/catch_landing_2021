@@ -41,10 +41,10 @@ Route::post('method/datatables', [MethodController::class, 'datatables'])->name(
 Route::resource('/method', MethodController::class);
 Route::resource('/fisherman', FishermanController::class);
 Route::resource('/island.fisherman', FishermanController::class);
-Route::post('trip/datatables', [TripController::class, 'datatables'])->name('trip.datatables');
-Route::resource('/trip', TripController::class);
+Route::post('trip/datatables', [FishermanTripController::class, 'datatables'])->name('trip.datatables');
+Route::resource('/trip', FishermanTripController::class);
 Route::resource('/fisherman.trip', FishermanTripController::class);
-Route::get('/export-excel', [TripController::class, 'ExportIntoExcel'])->name('export-excel');
+Route::get('/export-excel', [FishermanTripController::class, 'ExportIntoExcel'])->name('export-excel');
 Route::apiresource('/tripreport', ReportController::class);// I use apiresource to exclude other methods like edit and create
 
 // Route::get('/Island', [App\Http\Controllers\IslandController::class, 'index'])->name('island.index');
