@@ -40,6 +40,7 @@ Route::post('method/datatables', [MethodController::class, 'datatables'])->name(
 Route::resource('/method', MethodController::class);
 Route::resource('/fisherman', FishermanController::class);
 Route::resource('/island.fisherman', FishermanController::class);
+Route::post('trip/datatables', [TripController::class, 'datatables'])->name('trip.datatables');
 Route::resource('/trip', TripController::class);
 Route::resource('/fisherman.trip', TripController::class);
 Route::get('/export-excel', [TripController::class, 'ExportIntoExcel'])->name('export-excel');

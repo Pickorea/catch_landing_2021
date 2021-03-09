@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Landing\ViewRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\DataTables\IslandDataTable;
 use App\Models\Fisherman;
 use App\Models\Trip;
 use App\Models\Species;
+use App\Services\TripService;
 use App\Models\Location;
 use App\Models\Method;
 use Illuminate\Support\Facades\Paginator;
@@ -15,10 +17,24 @@ use App\Http\Requests\Landing\StoreFishermanRequest;
 use App\Http\Requests\Landing\UpdateFishermanRequest;
 use App\Exports\TripExport;
 use Excel;
-use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
+
 
 class TripController extends Controller
 {
+     /**
+     * @var TripService
+     */
+    protected $service;
+
+    /**
+    * TripController constructor.
+    * @param TripService $service
+    */
+    public function __construct(TripService $service)
+    {
+        $this->service = $service;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,10 +42,10 @@ class TripController extends Controller
      */
     public function index()
     {
-        $trips = Fisherman ::with(['trips'])->paginate(5);
+        // $trips = Fisherman ::with(['trips'])->paginate(5);
 
 
-        return view('landing.trips.index')->withItems($trips);
+        return view('landing.trips.index');//->withItems($trips);
     }
 
     /**
@@ -178,4 +194,23 @@ class TripController extends Controller
     {
         return Excel::download(new TripExport, 'triplist.csv');
     }
+
+    public function datatables(ViewRequest $request)
+    {
+        $search = $request->get('search', '');
+
+        if (is_array($search)) {
+            $search = $search['value'];
+        }
+        $query = $this->service->datatables($search);
+
+        $datatables = DataTables::make($query)
+            ->editColumn('created_at', function ($row) {
+                return $row->created_at ? with(new Carbon($row->created_at))->format('Y-m-d') : '';
+            })
+            ->make(true);
+
+        return $datatables;
+    }
+
 }

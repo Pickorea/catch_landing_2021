@@ -24,10 +24,10 @@ class TripService extends BaseService
 
     public function searchPaginate($search = null)
     {
-        $user = Auth::user();
-        if (! $user->can('kiims.view')) {
-            throw new GeneralException(__('You do not have access to do that.'));
-        }
+        // $user = Auth::user();
+        // if (! $user->can('kiims.view')) {
+        //     throw new GeneralException(__('You do not have access to do that.'));
+        // }
 
         $query = $this->model->query();
         if (! empty($search)) {
@@ -41,10 +41,11 @@ class TripService extends BaseService
 
     public function datatables($search = '')
     {
-        $user = Auth::user();
-        if (! $user->can('kiims.view')) {
-            throw new GeneralException(__('You do not have access to do that.'));
-        }
+        // $user = Auth::user();
+        // if (! $user->can('kiims.view')) {
+        //     throw new GeneralException(__('You do not have access to do that.'));
+        // }
+
         $query = $this->model->query();
 
         if (! empty($search)) {
