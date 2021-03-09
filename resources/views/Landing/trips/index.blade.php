@@ -63,7 +63,7 @@
         let datatable = (function () {
             {{--let permissionEdit = ('{{ $logged_in_user->can('') }}' == '1');--}}
             let permissionEdit = true;
-            
+
             var table;
             var init = function (item) {
                 var htmlTable = $(item);
@@ -86,6 +86,7 @@
                     columns: [
                         // {data: 'trip_id', name: 'trip_id'},
                         {data: 'fisherman_id', name: 'fisherman_id'},
+                        {data: 'id', name: 'id'},
                         {data: 'island_name', name: 'island_name'},
                         {data: 'first_name', name: 'first_name'},
                         {data: 'last_name', name: 'last_name'},

@@ -19,12 +19,11 @@ use App\Exports\TripExport;
 use Excel;
 use Yajra\DataTables\Facades\DataTables;
 
-
 class TripController extends Controller
 {
-     /**
-     * @var TripService
-     */
+    /**
+    * @var TripService
+    */
     protected $service;
 
     /**
@@ -208,9 +207,14 @@ class TripController extends Controller
             ->editColumn('created_at', function ($row) {
                 return $row->created_at ? with(new Carbon($row->created_at))->format('Y-m-d') : '';
             })
+            ->editColumn('updated_at', function ($row) {
+                return $row->updated_at ? with(new Carbon($row->updated_at))->format('Y-m-d') : '';
+            })
+            ->editColumn('trip_date', function ($row) {
+                return $row->trip_date ? with(new Carbon($row->trip_date))->format('Y-m-d') : '';
+            })
             ->make(true);
 
         return $datatables;
     }
-
 }

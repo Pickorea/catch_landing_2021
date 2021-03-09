@@ -46,17 +46,18 @@ class TripService extends BaseService
         //     throw new GeneralException(__('You do not have access to do that.'));
         // }
 
-        $query = $this->model->query()->leftjoin('fishermans', 'fishermans.id', '=', 'trips.fisherman_id')
-        ->leftjoin('methods', 'methods.id', '=', 'trips.method_id')
-                ->leftjoin('locations', 'locations.id', '=', 'trips.location_id')
-                ->leftjoin('islands', 'islands.id', '=', 'fishermans.island_id')
-                ->select([
-                    'trips.*',  'fishermans.*', 'locations.*','methods.*','islands.*'
-                ]);
+        $query = $this->model->query()
+            ->leftjoin('fishermans', 'fishermans.id', '=', 'trips.fisherman_id')
+            ->leftjoin('methods', 'methods.id', '=', 'trips.method_id')
+            ->leftjoin('locations', 'locations.id', '=', 'trips.location_id')
+            ->leftjoin('islands', 'islands.id', '=', 'fishermans.island_id')
+            ->select([
+                'trips.*',  'fishermans.*', 'locations.*','methods.*','islands.*'
+            ]);
 
-                if (! empty($search)) {
-                    $query->whereLike(['first_name','last_name'], $search);
-                }
+        if (! empty($search)) {
+            $query->whereLike(['first_name','last_name'], $search);
+        }
 
         return $query;
     }
@@ -69,7 +70,7 @@ class TripService extends BaseService
      */
     public function store(array $data = []): Trip
     {
-        DB::beginTransaction();
+//        DB::beginTransaction();
         // $user = Auth::user();
         // if (! $user->can('kiims.create')) {
         //     throw new GeneralException(__('Not Authorised'));
@@ -77,18 +78,18 @@ class TripService extends BaseService
 
         $item = $this->model::create($data);
 
-        $species_pivot = [];
-        for ($i=0; $i < count($species); $i++) {
-            if ($species[$i] != '') {
-                $species_pivot[$species[$i]] = ['weight' => $weight[$i]];
-            }
-        }
-        $item->species()->sync($species_pivot);
+//        $species_pivot = [];
+//        for ($i=0; $i < count($species); $i++) {
+//            if ($species[$i] != '') {
+//                $species_pivot[$species[$i]] = ['weight' => $weight[$i]];
+//            }
+//        }
+//        $item->species()->sync($species_pivot);
 
 
         return   $item;
-        
-        DB::rollBack();
+
+//        DB::rollBack();
     }
 
 
@@ -114,6 +115,6 @@ class TripService extends BaseService
         //     throw new GeneralException(__('You do not have access to do that.'));
         // }
 
-        return $item->delete($data);
+        return $item->delete();
     }
 }
