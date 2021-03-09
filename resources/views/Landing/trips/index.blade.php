@@ -76,11 +76,11 @@
                     },
                     columns: [
                         {data: 'fisherman_id', name: 'fisherman_id'},
-                        {data: 'trip_hrs', name: 'trip_hrs'},
-                        {data: 'number_of_fishers', name: 'number_of_fishers'},
-                        {data: 'trip_date', name: 'trip_date'},
-                        {data: 'location_id', name: 'location_id'},
-                        {data: 'method_id', name: 'method_id'},
+                        // {data: 'trip_hrs', name: 'trip_hrs'},
+                        // {data: 'number_of_fishers', name: 'number_of_fishers'},
+                        // {data: 'trip_date', name: 'trip_date'},
+                        // {data: 'location_id', name: 'location_id'},
+                        // {data: 'method_id', name: 'method_id'},
                         {data: 'created_at', name: 'created_at'},
                         {data: 'id',  name: 'id', searchable: false, sortable: false }
                     ],
@@ -94,7 +94,7 @@
                                  return value;
 
                             },
-                            "targets": 7
+                            "targets": 2
                         },
                     ]
                 });
