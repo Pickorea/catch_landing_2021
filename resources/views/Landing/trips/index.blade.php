@@ -8,7 +8,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col">
-                                <h3>@lang('Trip')</h3>
+                                <h3>@lang('Trips')</h3>
                             </div>
                             <div class="col-auto">
                                 <form method="POST" id="search-form" class="form-inline" role="form">
