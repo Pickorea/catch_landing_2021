@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FishermanTripController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IslandController;
 use App\Http\Controllers\SpeciesController;
@@ -42,7 +43,7 @@ Route::resource('/fisherman', FishermanController::class);
 Route::resource('/island.fisherman', FishermanController::class);
 Route::post('trip/datatables', [TripController::class, 'datatables'])->name('trip.datatables');
 Route::resource('/trip', TripController::class);
-Route::resource('/fisherman.trip', TripController::class);
+Route::resource('/fisherman.trip', FishermanTripController::class);
 Route::get('/export-excel', [TripController::class, 'ExportIntoExcel'])->name('export-excel');
 Route::apiresource('/tripreport', ReportController::class);// I use apiresource to exclude other methods like edit and create
 
