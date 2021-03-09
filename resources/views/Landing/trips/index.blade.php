@@ -28,6 +28,13 @@
                             <thead>
                             <tr>
                                 <th>Title</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Trip hrs</th>
+                                <th>Nbr of Fishers</th>
+                                <th>Trip dates</th>
+                                <th>Locations</th>
+                                <th>Methods</th>
                                 <th>Created at</th>
                                 <th width="80px">
                                     <a href="{{ route('trip.create') }}"><i class="fas fa-plus"></i>+</a>
@@ -81,8 +88,8 @@
                         {data: 'trip_hrs', name: 'trip_hrs'},
                         {data: 'number_of_fishers', name: 'number_of_fishers'},
                         {data: 'trip_date', name: 'trip_date'},
-                        {data: 'location_id', name: 'location_id'},
-                        {data: 'method_id', name: 'method_id'},
+                        {data: 'location_name', name: 'location_name'},
+                        {data: 'method_name', name: 'method_name'},
                         {data: 'created_at', name: 'created_at'},
                         {data: 'id',  name: 'id', searchable: false, sortable: false }
                     ],
