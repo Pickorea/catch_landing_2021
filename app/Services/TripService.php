@@ -46,11 +46,16 @@ class TripService extends BaseService
         //     throw new GeneralException(__('You do not have access to do that.'));
         // }
 
-        $query = $this->model->query();
+        $query = $this->model->query()->leftjoin('fishermans', 'fishermans.id', '=', 'trips.fisherman_id')
+        ->leftjoin('methods', 'methods.id', '=', 'trips.method_id')
+                ->leftjoin('locations', 'locations.id', '=', 'trips.location_id_id')
+                ->select([
+                    'fishermans.*', 'methods.*', 'locations.*'
+                ]);
 
-        if (! empty($search)) {
-            $query->whereLike(['name','scientific_name'], $search);
-        }
+                if (! empty($search)) {
+                    $query->whereLike(['first_name','last_name'], $search);
+                }
 
         return $query;
     }
