@@ -36,7 +36,6 @@ class IslandController extends Controller
      */
     public function index(ViewRequest $request)
     {
-      
         return view('landing.islands.index');
     }
 

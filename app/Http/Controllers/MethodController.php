@@ -35,7 +35,6 @@ class MethodController extends Controller
      */
     public function index()
     {
-    
         return view('landing.methods.index');
     }
 

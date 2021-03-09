@@ -19,7 +19,7 @@ use App\Exports\TripExport;
 use Excel;
 use Yajra\DataTables\Facades\DataTables;
 
-class TripController extends Controller
+class FishermanTripController extends Controller
 {
     /**
     * @var TripService
@@ -47,27 +47,6 @@ class TripController extends Controller
         return view('landing.trips.index');//->withItems($trips);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Fisherman $fisherman)
-    {
-        $species = Species::pluck('species_name', 'id');
-        $locations = Location::pluck('location_name', 'id');
-        $methods = Method::pluck('method_name', 'id');
-        $trip = new Trip();
-        $trip->trip_date = Carbon::now();
-        $trip->number_of_fishers = 1;
-
-        return view('landing.trips.create')
-        ->withTrip($trip)
-        ->withFisherman($fisherman)
-        ->withSpecies($species)
-        ->withLocations($locations)
-        ->withMethods($methods);
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -126,6 +105,19 @@ class TripController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function fishermanEdit(Fisherman $fisherman, Trip $trip)
+    {
+        $species = Species::pluck('species_name', 'id');
+        $locations = Location::pluck('location_name', 'id');
+        $methods = Method::pluck('method_name', 'id');
+
+        return view('landing.trips.edit')
+            ->withFisherman($fisherman)
+            ->withSpecies($species)
+            ->withLocations($locations)
+            ->withMethods($methods)
+            ->withTrip($trip);
+    }
 
     public function edit(Trip $trip)
     {
