@@ -49,8 +49,9 @@ class TripService extends BaseService
         $query = $this->model->query()->leftjoin('fishermans', 'fishermans.id', '=', 'trips.fisherman_id')
         ->leftjoin('methods', 'methods.id', '=', 'trips.method_id')
                 ->leftjoin('locations', 'locations.id', '=', 'trips.location_id')
+                ->leftjoin('islands', 'islands.id', '=', 'fishermans.island_id')
                 ->select([
-                    'trips.*',  'fishermans.*', 'locations.*','methods.*'
+                    'trips.*',  'fishermans.*', 'locations.*','methods.*','islands.*'
                 ]);
 
                 if (! empty($search)) {

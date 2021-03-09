@@ -28,6 +28,7 @@
                             <thead>
                             <tr>
                                 <th>Title</th>
+                                <th>Island</th>
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Trip hrs</th>
@@ -83,6 +84,7 @@
                     },
                     columns: [
                         {data: 'fisherman_id', name: 'fisherman_id'},
+                        {data: 'island_name', name: 'island_name'},
                         {data: 'first_name', name: 'first_name'},
                         {data: 'last_name', name: 'last_name'},
                         {data: 'trip_hrs', name: 'trip_hrs'},
@@ -103,7 +105,7 @@
                                  return value;
 
                             },
-                            "targets": 7
+                            "targets": 10
                         },
                     ]
                 });
