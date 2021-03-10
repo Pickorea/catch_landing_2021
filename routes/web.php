@@ -9,8 +9,7 @@ use App\Http\Controllers\MethodController;
 use App\Http\Controllers\FishermanController;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\ReportController;
-
-// use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,23 +28,30 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('home', [HomeController::class, 'index'])->name('home');
 // Route::get('/home', HomeController::class, 'index')->name('home');
+
 Route::post('island/datatables', [IslandController::class, 'datatables'])->name('island.datatables');
-Route::resource('/island', IslandController::class);
+Route::resource('island', IslandController::class);
+Route::resource('island.fisherman', FishermanController::class);
+
 Route::post('species/datatables', [SpeciesController::class, 'datatables'])->name('species.datatables');
-Route::resource('/species', SpeciesController::class);
+Route::resource('species', SpeciesController::class);
+
 Route::post('location/datatables', [LocationController::class, 'datatables'])->name('location.datatables');
-Route::resource('/location', LocationController::class);
+Route::resource('location', LocationController::class);
+
 Route::post('method/datatables', [MethodController::class, 'datatables'])->name('method.datatables');
-Route::resource('/method', MethodController::class);
-Route::resource('/fisherman', FishermanController::class);
-Route::resource('/island.fisherman', FishermanController::class);
+Route::resource('method', MethodController::class);
+
+Route::resource('fisherman', FishermanController::class);
+Route::resource('fisherman.trip', FishermanTripController::class);
+
 Route::post('trip/datatables', [FishermanTripController::class, 'datatables'])->name('trip.datatables');
-Route::resource('/trip', TripController::class);
-Route::resource('/fisherman.trip', FishermanTripController::class);
-Route::get('/export-excel', [FishermanTripController::class, 'ExportIntoExcel'])->name('export-excel');
-Route::apiresource('/tripreport', ReportController::class);// I use apiresource to exclude other methods like edit and create
+Route::resource('trip', TripController::class);
+
+Route::get('export-excel', [FishermanTripController::class, 'ExportIntoExcel'])->name('export-excel');
+Route::apiresource('tripreport', ReportController::class);// I use apiresource to exclude other methods like edit and create
 
 // Route::get('/Island', [App\Http\Controllers\IslandController::class, 'index'])->name('island.index');
 // Route::post('/Island/create', [App\Http\Controllers\IslandController::class, 'create'])->name('island.create');
