@@ -52,7 +52,9 @@ class TripService extends BaseService
             ->leftjoin('locations', 'locations.id', '=', 'trips.location_id')
             ->leftjoin('islands', 'islands.id', '=', 'fishermans.island_id')
             ->select([
-                'trips.*',  'fishermans.*', 'locations.*','methods.*','islands.*'
+                'trips.id',  'fisherman_id',  'island_name', 'first_name',  'last_name',
+                'trip_hrs', 'number_of_fishers', 'trip_date', 'location_name', 'method_name',
+                'trips.created_at'
             ]);
 
         if (! empty($search)) {
