@@ -27,8 +27,8 @@
                                data-order='[[ 0, "desc" ]]' data-href="{{ route("trip.datatables") }}">
                             <thead>
                             <tr>
-                                <th>Title</th>
-                                <th>Trip id</th>
+                                <!-- <th>Title</th>
+                                <th>Trip id</th> -->
                                 <th>Island</th>
                                 <th>First Name</th>
                                 <th>Last Name</th>
@@ -85,8 +85,8 @@
                     },
                     columns: [
                         // {data: 'trip_id', name: 'trip_id'},
-                        {data: 'fisherman_id', name: 'fisherman_id'},
-                        {data: 'id', name: 'id'},
+                        // {data: 'fisherman_id', name: 'fisherman_id'},
+                        // {data: 'id', name: 'id'},
                         {data: 'island_name', name: 'island_name'},
                         {data: 'first_name', name: 'first_name'},
                         {data: 'last_name', name: 'last_name'},
@@ -108,7 +108,7 @@
                                  return value;
 
                             },
-                            "targets": 11
+                            "targets": 9
                         },
                     ]
                 });
