@@ -46,14 +46,29 @@ class FishermanController extends Controller
         return view('landing.fishermans.index')->withIsland($island);
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function create(Island $island)
+    public function create(Request $request)
     {
-        return view('landing.fishermans.create')->withItem($island);
+        $fisherman = new Fisherman();
+        $fisherman->island_id = intval($request->get('island', '0'));
+        return view('landing.fishermans.create')
+            ->withItem($fisherman);
+    }
+
+    public function create2Alternative(Request $request)
+    {
+        $fisherman = new Fisherman();
+        $fisherman->island_id = intval($request->get('island', '0'));
+        $islands = Island::query()->pluck('island_name', 'id');
+        return view('landing.fishermans.create2Alternative')
+            ->withItem($fisherman)
+            ->withIslands($islands);
     }
 
     /**
@@ -62,12 +77,13 @@ class FishermanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFishermanRequest $request)
     {
-        $fishermans = Fisherman::create($request->all());
+        $fisherman = Fisherman::create($request->validated());
 
-        return redirect()->route('island.index')
-        ->with('success', 'Fisherman created successfully');
+        return redirect()
+            ->route('island.index')
+            ->with('success', 'Fisherman created successfully');
     }
 
     /**

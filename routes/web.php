@@ -45,6 +45,7 @@ Route::resource('location', LocationController::class);
 Route::post('method/datatables', [MethodController::class, 'datatables'])->name('method.datatables');
 Route::resource('method', MethodController::class);
 
+Route::get('fisherman/create2', [FishermanController::class, 'create2Alternative'])->name('fisherman.create2');
 Route::post('fisherman/datatables', [FishermanController::class, 'datatables'])->name('fisherman.datatables');
 Route::resource('fisherman', FishermanController::class);
 Route::resource('fisherman.trip', FishermanTripController::class);

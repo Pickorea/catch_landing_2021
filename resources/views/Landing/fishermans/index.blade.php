@@ -80,10 +80,10 @@
                         <div class="row">
                             <div class="col">
                                 <h3>
-                                    {{ __('Index of Fisherman') }}
                                     @isset($island)
                                         {{ $island->island_name }}
                                     @endisset
+                                        {{ __('Fishermen') }}
                                 </h3>
                             </div>
                             <div class="col-auto">
@@ -96,7 +96,11 @@
                             </div>
                             <div class="col">
                                 <div class="float-right">
-                                    <a href="{{ route('fisherman.create') }}" class="btn btn-primary ">@lang("Create")</a>
+                                    @isset($island)
+                                        <a href="{{ route('fisherman.create',['island' => $island->id]) }}" class="btn btn-primary ">@lang("Create")</a>
+                                    @else
+                                        <a href="{{ route('fisherman.create') }}" class="btn btn-primary ">@lang("Create")</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -112,7 +116,11 @@
                                 <th>Last Name</th>
                                 <th>Island</th>
                                 <th width="80px">
-                                    <a href="{{ route('fisherman.create') }}"><i class="fas fa-plus"></i>+</a>
+                                    @isset($island)
+                                        <a href="{{ route('fisherman.create2',['island' => $island->id]) }}"><i class="fas fa-plus"></i>+</a>
+                                    @else
+                                        <a href="{{ route('fisherman.create2') }}"><i class="fas fa-plus"></i>+</a>
+                                    @endif
                                 </th>
                             </tr>
                             </thead>
