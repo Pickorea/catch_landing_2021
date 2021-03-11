@@ -32,8 +32,9 @@ Route::get('home', [HomeController::class, 'index'])->name('home');
 // Route::get('/home', HomeController::class, 'index')->name('home');
 
 Route::post('island/datatables', [IslandController::class, 'datatables'])->name('island.datatables');
+Route::get('island/{island}/fisherman', [FishermanController::class, 'islandindex'])->name('island.fishermans');
 Route::resource('island', IslandController::class);
-Route::resource('island.fisherman', FishermanController::class);
+//Route::resource('island.fisherman', FishermanController::class);
 
 Route::post('species/datatables', [SpeciesController::class, 'datatables'])->name('species.datatables');
 Route::resource('species', SpeciesController::class);
@@ -44,6 +45,7 @@ Route::resource('location', LocationController::class);
 Route::post('method/datatables', [MethodController::class, 'datatables'])->name('method.datatables');
 Route::resource('method', MethodController::class);
 
+Route::post('fisherman/datatables', [FishermanController::class, 'datatables'])->name('fisherman.datatables');
 Route::resource('fisherman', FishermanController::class);
 Route::resource('fisherman.trip', FishermanTripController::class);
 
