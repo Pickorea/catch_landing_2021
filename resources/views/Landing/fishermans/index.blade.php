@@ -117,9 +117,9 @@
                                 <th>Island</th>
                                 <th width="80px">
                                     @isset($island)
-                                        <a href="{{ route('fisherman.create2',['island' => $island->id]) }}"><i class="fas fa-plus"></i>+</a>
+                                        <a href="{{ route('fisherman.create',['island' => $island->id]) }}"><i class="fas fa-plus"></i>+</a>
                                     @else
-                                        <a href="{{ route('fisherman.create2') }}"><i class="fas fa-plus"></i>+</a>
+                                        <a href="{{ route('fisherman.create') }}"><i class="fas fa-plus"></i>+</a>
                                     @endif
                                 </th>
                             </tr>
