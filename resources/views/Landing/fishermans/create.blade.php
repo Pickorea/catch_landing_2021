@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
         <div class="card">
-                <x-forms.post action="{{ route('fisherman.store', ['island'=> isset($island) ? $island->id ])}}">
+                <x-forms.post action="{{ route('island.store', ['$fisherman->id'])}}">
                 <input type="hidden" name="island_id" value="{{$item->id}}" />
                     <div class="card">
                         <div class="card-header">{{ __('Create Fisherman') }}
