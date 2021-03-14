@@ -103,7 +103,7 @@
                         {
                             "render": function ( data, type, row ) {
                                 let value = '<a href="{{ route('fisherman.index') }}/'+row['id']+'"><i class="fas fa-eye"></i>View</a>';
-                                value +=  '<a href="{{ route('fisherman.index') }}/'+row['id']+'/trip"><i class="fas fa-eye"></i> create Trip</a>';
+                                value +=  '<a href="{{ route('fisherman.index') }}/'+row['id']+'/trip/create"><i class="fas fa-eye"></i> create Trip</a>';
                                 if (permissionEdit) {
                                     value += ' <a href="{{ route('fisherman.index') }}/'+row['id']+'/edit"><i class="fas fa-edit"></i>Edit</a>' ;
                                 }
