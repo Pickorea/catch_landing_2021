@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(PermissionsSeeder::class);
+
         User::create([
             'name' => 'Super Admin',
             'email' => 'admin@admin.com',
