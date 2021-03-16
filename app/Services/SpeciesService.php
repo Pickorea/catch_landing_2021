@@ -48,7 +48,7 @@ class SpeciesService extends BaseService
         $query = $this->model->query();
 
         if (! empty($search)) {
-            $query->where('species_name', 'like', '%'.$search.'%');
+            $query->whereLike(['species_name'], $search);
         }
 
         return $query;

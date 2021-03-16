@@ -47,7 +47,7 @@ class LocationService extends BaseService
         $query = $this->model->query();
 
         if (! empty($search)) {
-            $query->where('location_name','LIKE', $search);
+            $query->whereLike(['location_name'], $search);
         }
 
         return $query;
