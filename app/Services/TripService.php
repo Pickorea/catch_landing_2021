@@ -61,13 +61,13 @@ class TripService extends BaseService
             ->leftjoin('locations', 'locations.id', '=', 'trips.location_id')
             ->leftjoin('islands', 'islands.id', '=', 'fishermans.island_id')
             ->select([
-                'trips.id',  'fisherman_id',  'island_name', 'first_name',  'last_name',
+                'trips.id',  'fisherman_id', 'island_name', 'first_name',  'last_name',
                 'trip_hrs', 'number_of_fishers', 'trip_date', 'location_name', 'method_name',
                 'trips.created_at'
             ]);
 
         if (! empty($search)) {
-            $query->where('first_name','last_name','LIKE',$search);
+            $query->whereLike(['first_name','last_name', 'island_name', 'location_name', 'method_name'],$search);
         }
 
         return $query;
