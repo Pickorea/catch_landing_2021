@@ -40,9 +40,7 @@ class TripService extends BaseService
             'trips.created_at'
         ]);
         if (! empty($search)) {
-            $search = '%'.$search.'%';
-            $query->where('first_name','last_name','LIKE',$search)
-                ->orWhere('last_name', 'like', $search);
+            $query->whereLike(['first_name','last_name', 'island_name', 'location_name', 'method_name'],$search);
         }
 
         return $query->paginate();

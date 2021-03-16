@@ -32,8 +32,7 @@ class FishermanService extends BaseService
 
         $query = $this->model->query();
         if (! empty($search)) {
-            $search = '%'.$search.'%';
-            $query->where('name', 'like', $search);
+            $query->whereLike(['first_name','last_name', 'island_name'], $search);
         }
 
         return $query->paginate();

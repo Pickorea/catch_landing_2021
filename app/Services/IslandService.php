@@ -30,8 +30,7 @@ class IslandService extends BaseService
 
         $query = $this->model->query();
         if (! empty($search)) {
-            $search = '%';
-            $query->where('island_name', 'like', $search);
+            $query->whereLike(['island_name'], $search);
         }
 
         return $query->paginate();
@@ -47,7 +46,7 @@ class IslandService extends BaseService
         $query = $this->model->query();
 
         if (! empty($search)) {
-            $query->where('island_name','LIKE','%'.$search.'%');
+            $query->whereLike(['island_name'], $search);
         }
 
         return $query;
