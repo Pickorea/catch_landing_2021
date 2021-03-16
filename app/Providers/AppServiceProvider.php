@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
         // Add whereLike
         // https://murze.be/searching-models-using-a-where-like-query-in-laravel
 
-        Builder::macro('whereLike', function ($attributes, string $searchTerms) {
+        Builder::macro('whereLike2', function ($attributes, string $searchTerms) {
             if (! empty($searchTerms)) {
                 // \Barryvdh\Debugbar\Facade::info('whereLike Called '.$searchTerms);
                 $this->where(function (Builder $query) use ($attributes, $searchTerms) {
@@ -52,7 +52,7 @@ class AppServiceProvider extends ServiceProvider
             return $this;
         });
 
-        Builder::macro('whereLike2', function ($attributes, string $searchTerms) {
+        Builder::macro('whereLike', function ($attributes, string $searchTerms) {
             if (! empty($searchTerms)) {
                 $this->where(function (Builder $query) use ($attributes, $searchTerms) {
                     foreach (Arr::wrap($attributes) as $attribute) {
