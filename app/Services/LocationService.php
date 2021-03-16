@@ -31,7 +31,7 @@ class LocationService extends BaseService
         $query = $this->model->query();
         if (! empty($search)) {
             $search = '%';
-            $query->where('method_name', 'like', $search);
+            $query->where('location_name', 'like', $search);
         }
 
         return $query->paginate();
@@ -47,7 +47,7 @@ class LocationService extends BaseService
         $query = $this->model->query();
 
         if (! empty($search)) {
-            $query->whereLike(['method_name'], $search);
+            $query->where('location_name','LIKE', $search);
         }
 
         return $query;

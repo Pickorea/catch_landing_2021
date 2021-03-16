@@ -47,7 +47,7 @@ class MethodService extends BaseService
         $query = $this->model->query();
 
         if (! empty($search)) {
-            $query->whereLike(['method_name'], $search);
+            $query->where('method_name', 'LIKE','%'.$search.'%');
         }
 
         return $query;
