@@ -14,7 +14,7 @@ class UpdateMethodRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user()->can('landing.edit');
     }
 
     /**

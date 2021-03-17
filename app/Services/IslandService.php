@@ -23,10 +23,10 @@ class IslandService extends BaseService
 
     public function searchPaginate($search = null)
     {
-        // $user = Auth::user();
-        // if (! $user->can('kiims.view')) {
-        //     throw new GeneralException(__('You do not have access to do that.'));
-        // }
+        $user = Auth::user();
+        if (! $user->can('landing.view')) {
+            throw new GeneralException(__('You do not have access to do that.'));
+        }
 
         $query = $this->model->query();
         if (! empty($search)) {
@@ -39,10 +39,10 @@ class IslandService extends BaseService
 
     public function datatables($search = '')
     {
-        // $user = Auth::user();
-        // if (! $user->can('kiims.view')) {
-        //     throw new GeneralException(__('You do not have access to do that.'));
-        // }
+        $user = Auth::user();
+        if (! $user->can('landing.view')) {
+            throw new GeneralException(__('You do not have access to do that.'));
+        }
         $query = $this->model->query();
 
         if (! empty($search)) {
@@ -54,10 +54,10 @@ class IslandService extends BaseService
 
     public function store(array $data = []): Island
     {
-        // $user = Auth::user();
-        // if (! $user->can('kiims.create')) {
-        //     throw new GeneralException(__('You do not have access to do that.'));
-        // }
+        $user = Auth::user();
+        if (! $user->can('landing.create')) {
+            throw new GeneralException(__('You do not have access to do that.'));
+        }
 
         return  $this->model::create($data);
     }
@@ -69,20 +69,20 @@ class IslandService extends BaseService
      */
     public function update(Island $item, array $data = []): bool
     {
-        // $user = Auth::user();
-        // if (! $user->can('kiims.edit')) {
-        //     throw new GeneralException(__('You do not have access to do that.'));
-        // }
+        $user = Auth::user();
+        if (! $user->can('landing.edit')) {
+            throw new GeneralException(__('You do not have access to do that.'));
+        }
 
         return $item->update($data);
     }
 
     public function delete(Island $item, array $data = []): bool
     {
-        // $user = Auth::user();
-        // if (! $user->can('kiims.edit')) {
-        //     throw new GeneralException(__('You do not have access to do that.'));
-        // }
+        $user = Auth::user();
+        if (! $user->can('landing.edit')) {
+            throw new GeneralException(__('You do not have access to do that.'));
+        }
 
         return $item->delete($data);
     }

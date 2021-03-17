@@ -13,7 +13,7 @@ class ViewRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user()->can('landing.view');
     }
 
     /**

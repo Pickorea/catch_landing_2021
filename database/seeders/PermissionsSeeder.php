@@ -22,7 +22,7 @@ class PermissionsSeeder extends Seeder
         // create permissions
         Permission::create(['name' => 'landing.create']);
         Permission::create(['name' => 'landing.edit']);
-        Permission::create(['name' => 'landing.show']);
+        Permission::create(['name' => 'landing.view']);
         Permission::create(['name' => 'landing.delete']);
 
         // create roles and assign existing permissions
@@ -34,6 +34,7 @@ class PermissionsSeeder extends Seeder
         $role2->givePermissionTo('landing.create');
         $role2->givePermissionTo('landing.edit');
         $role2->givePermissionTo('landing.delete');
+        $role2->givePermissionTo('landing.view');
 
         $role3 = Role::create(['name' => 'super-admin']);
        
