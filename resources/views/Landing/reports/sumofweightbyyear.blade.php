@@ -8,7 +8,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Report') }}
-                <div class="btn pull-right"> <a href="{{ route('sum.weightbymonth') }}"> <button  class="btn btn-primary ">Export</button></a> </div>
+                <div class="btn pull-right"> <a href="{{ route('sum.weightbyyear') }}"> <button  class="btn btn-primary ">Export</button></a> </div>
                 </div>
 
 
@@ -24,9 +24,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">Island</th>
-                                        <th scope="col">Month</th>
                                         <th scope="col">Year</th>
-                                        <th scope="col">Species Name</th>
                                         <th scope="col">Weight</th>
 
                                     </tr>
@@ -38,9 +36,7 @@
 {{--                                          </tr>--}}
                                     <tr>
                                         <td>{{$report->island_name}}</td>
-                                        <td> {{$report->Month}}</td>
                                         <td> {{$report->Year}}</td>
-                                        <td> {{$report->species_name}}</td>
                                         <td> {{$report->total_weight}}</td>
 
 

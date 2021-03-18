@@ -19,7 +19,8 @@
                             <a class="dropdown-item" href="{{ route('fisherman.index') }}">Fisherman</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{route('tripreport.index')}}">Report</a>
-                            <a class="dropdown-item" href="{{route('sum.weight')}}">Weight by Month</a>
+                            <a class="dropdown-item" href="{{route('sum.weightbymonth')}}">Weight by Month</a>
+                            <a class="dropdown-item" href="{{route('sum.weightbyyear')}}">Weight by Year</a>
                         </div>
                     </li>
                 </ul>
