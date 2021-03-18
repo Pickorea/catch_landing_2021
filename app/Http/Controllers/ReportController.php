@@ -36,6 +36,16 @@ class ReportController extends Controller
         return view('landing.reports.tripreport')->with('reports', $reports);
     }
 
+    public function getSumOfWeightByMonth()
+    {
+        //
+        $reports = $this->reportService->getSumOfweightByMonth();
+
+        // dd($tripReport);
+
+        return view('landing.reports.sumofweightbymonth')->with('reports', $reports);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
