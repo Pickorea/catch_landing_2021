@@ -24,7 +24,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">Island</th>
-                                        <th scope="col">Trip Date</th>
+                                        <th scope="col">Month</th>
                                         <th scope="col">Year</th>
                                         <th scope="col">Species Name</th>
                                         <th scope="col">Weight</th>
@@ -34,7 +34,7 @@
                                 <tbody>
                                       @foreach($reports as $report)
 {{--                                          <tr>--}}
-{{--                                              <td colspan="5">{{ json_encode($report) }}</td>--}}
+{{--                                              <td colspan="5">{{ json_encode($report) }}</td>
 {{--                                          </tr>--}}
                                     <tr>
                                         <td>{{$report->island_name}}</td>

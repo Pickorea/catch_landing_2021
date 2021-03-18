@@ -48,8 +48,8 @@ class ReportService
             ->leftJoin('locations', 'locations.id', '=', 'trips.location_id')
             ->leftJoin('methods', 'methods.id', '=', 'trips.method_id')
             ->leftJoin('islands', 'islands.id', '=', 'fishermans.island_id')
-            ->select(DB::raw("DATE_FORMAT(trips.trip_date,'%m/%Y')"),'island_name', 'species_name',  DB::raw('sum(weight) as total_weight'))
-            ->groupBy(DB::raw("DATE_FORMAT(trips.trip_date,'%m/%Y')"), 'island_name', 'species_name')
+            ->select(DB::raw("DATE_FORMAT(trips.trip_date,'%b') as Month"),DB::raw("DATE_FORMAT(trips.trip_date,'%Y') as Year"),'island_name', 'species_name',  DB::raw('sum(weight) as total_weight'))
+            ->groupBy('Month','Year', 'island_name', 'species_name')
             ->get();
 
         return $records;
