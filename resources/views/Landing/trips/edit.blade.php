@@ -53,7 +53,7 @@
                                 <tr>
                                     <th>Species</th>
                                     <th>Weight</th>
-                                    <th> <button id="add_row" class="btn btn-default pull-left" onclick="addRow()">+</button></th>
+                                    <th> <button id="add_row" type="button" class="btn btn-default pull-left" onclick="addRow()">+</button></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -97,7 +97,7 @@
                     <x-forms.select-from-pluck name="species_id[]" value="" :options="$species" placeholder="-- choose species --" />
                 </td>
                 <td>
-                    <x-forms.textfield type="number" name="species_weight" value="" />
+                    <x-forms.textfield type="number" name="species_weight[]" value="" />
                 </td>
                 <td><button type="button" onclick="deleteSelectedRow(this)" class="btn btn-danger pull-right">-</button></td>
             </tr>
