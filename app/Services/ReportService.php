@@ -80,9 +80,9 @@ class ReportService
             ->leftJoin('locations', 'locations.id', '=', 'trips.location_id')
             ->leftJoin('methods', 'methods.id', '=', 'trips.method_id')
             ->leftJoin('islands', 'islands.id', '=', 'fishermans.island_id')
-            ->select(DB::raw("DATE_FORMAT(trips.trip_date,'%Y') as Year"),'island_name', 'trip_hrs', 'number_of_fishers',
+            ->select(DB::raw("DATE_FORMAT(trips.trip_date,'%Y') as Year"),'island_name',
                 DB::raw('sum(weight) / ( avg(trip_hrs) / avg(number_of_fishers)) as cpue'))
-            ->groupBy('Year', 'island_name','trip_hrs')
+            ->groupBy('Year', 'island_name')
             ->get();
 
         return $records;
