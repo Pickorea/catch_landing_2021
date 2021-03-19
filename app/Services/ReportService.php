@@ -71,4 +71,20 @@ class ReportService
         return $records;
     }
 
+    public function catctUnitEffortByIslandByYear()
+       {
+        $records = SpeciesTrip::query()
+            ->leftJoin('species', 'species.id', '=', 'species_trip.species_id')
+            ->leftJoin('trips', 'trips.id', '=', 'species_trip.trip_id')
+            ->leftJoin('fishermans', 'fishermans.id', '=', 'trips.fisherman_id')
+            ->leftJoin('locations', 'locations.id', '=', 'trips.location_id')
+            ->leftJoin('methods', 'methods.id', '=', 'trips.method_id')
+            ->leftJoin('islands', 'islands.id', '=', 'fishermans.island_id')
+            ->select(DB::raw("DATE_FORMAT(trips.trip_date,'%Y') as Year"),'island_name', 'trip_hrs', 'number_of_fishers',  DB::raw('sum(weight) / avg(trip_hrs) / avg(number_of_fishers) as cpue'))
+            ->groupBy('Year', 'island_name','trip_hrs', 'number_of_fishers')
+            ->get();
+
+        return $records;
+    }
+
 }

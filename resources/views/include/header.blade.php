@@ -21,6 +21,7 @@
                             <a class="dropdown-item" href="{{route('tripreport.index')}}">Report</a>
                             <a class="dropdown-item" href="{{route('sum.weightbymonth')}}">Weight by Month</a>
                             <a class="dropdown-item" href="{{route('sum.weightbyyear')}}">Weight by Year</a>
+                            <a class="dropdown-item" href="{{route('cpue.island')}}">CPUE by island</a>
                         </div>
                     </li>
                 </ul>

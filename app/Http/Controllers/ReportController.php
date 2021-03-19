@@ -56,6 +56,17 @@ class ReportController extends Controller
         return view('landing.reports.sumofweightbyyear')->with('reports', $reports);
     }
 
+
+    public function catctUnitEffortByIslandByYear()
+    {
+        //
+        $reports = $this->reportService->catctUnitEffortByIslandByYear();
+
+        // dd($tripReport);
+
+        return view('landing.reports.cpuebyislandbyyear')->with('reports', $reports);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

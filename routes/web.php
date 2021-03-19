@@ -58,6 +58,7 @@ route::group(['middleware' => 'auth'], function(){
     Route::get('export-excel', [FishermanTripController::class, 'ExportIntoExcel'])->name('export-excel');
     Route::get('sumofweightbymonth', [ReportController::class, 'getSumOfWeightByMonth'])->name('sum.weightbymonth');
     Route::get('sumofweightbyyear', [ReportController::class, 'getSumOfWeightByYear'])->name('sum.weightbyyear');
+    Route::get('cpuebyislandbyyear', [ReportController::class, 'catctUnitEffortByIslandByYear'])->name('cpue.island');
     Route::apiresource('tripreport', ReportController::class);// I use apiresource to exclude other methods like edit and create
 });
 
