@@ -83,6 +83,7 @@ class ReportService
 //            ->leftJoin('islands', 'islands.id', '=', 'fishermans.island_id')
 
         $records = Trip::query()
+            ->leftJoin('fishermans', 'fishermans.id', '=', 'trips.fisherman_id')
             ->leftJoin('islands', 'islands.id', '=', 'fishermans.island_id')
             ->select(
                 DB::raw("DATE_FORMAT(trips.trip_date,'%Y') as Year"),
