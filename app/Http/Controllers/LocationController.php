@@ -34,7 +34,7 @@ class LocationController extends Controller
      */
     public function index()
     {
-        return view('landing.Locations.index');
+        return view('landing.locations.index');
     }
 
     /**
